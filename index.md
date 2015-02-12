@@ -3,6 +3,7 @@ layout: page
 title: 风一样的男人
 tagline: 这风中世界
 ---
+{% include JB/setup %}
 
 {% for post in site.posts %}
 <div class = "card">
