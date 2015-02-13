@@ -12,6 +12,8 @@ published:	true
 
 Sublime Text 是一个轻量、简洁、高效、跨平台的编辑器，方便的配色以及兼容vim快捷键等各种优点博得了很多前端开发人员的喜爱，最新版本已经更新到了Sublime Text 3了。之前也不并知道它有这么多插件的扩展与支持，直到vincent问到有没有在用cTags插件，才知道原来Sublime通过插件也可以实现一些大型IDE的功能，遂google一下，本篇Blog就来介绍下Sublime下经常使用的插件。
 
+```
+
 ## 安装
 Sublime Text的安装很简单，只要按照安装步骤一步一步来就可以了，这里说下注册问题。
 
@@ -49,7 +51,7 @@ B5CA66E3 A09DBD3A 3FE85BBD 69893DBD
 </pre>
 
 ## 主题
-Sublime Text 的主题安装也很简单，只需要将下载的主题解压到packages路径下（也可以在Preferences - Browes Packages直接打开目录）,并以\"Theme - ***"形式命名，最后在Preferences - Setting-User打开设置在里面添加你的主题，重启Sublime Text即可。
+Sublime Text 的主题安装也很简单，只需要将下载的主题解压到packages路径下（也可以在Preferences -> Browes Packages直接打开目录）,并以"Theme - ***"形式命名，最后在Preferences -> Setting-User打开设置在里面添加你的主题，重启Sublime Text即可。
 
 ###下面推荐几款主题：
 <pre class="prettyprint linenums">
