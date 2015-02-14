@@ -1,6 +1,6 @@
 ---
 layout:		post
-title:		RequestManager
+title:		VolleyManager
 category:	[Android]
 tags:		[Android, Volley]
 published:	true
