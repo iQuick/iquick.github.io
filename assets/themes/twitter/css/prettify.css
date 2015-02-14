@@ -112,6 +112,10 @@
   }
 }
 /* Specify class=linenums on a pre to get line numbering */
+.linenums {
+  padding-left: 20px
+}
+
 ol.linenums {
   margin-top: 0;
   margin-bottom: 0;
