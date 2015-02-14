@@ -1,6 +1,6 @@
 ---
 layout:		post
-title:		VolleyManager
+title:		基于Volley的网络请求的简单封闭
 category:	[Android]
 tags:		[Android, Volley]
 published:	true
@@ -15,7 +15,7 @@ published:	true
 
 结构如下：
 
-![结构](image/volley-manager-structure.jpg)
+![结构]({{ BASE_PATH }}/image/volley-manager-structure.jpg)
 
 <!--break-->
 

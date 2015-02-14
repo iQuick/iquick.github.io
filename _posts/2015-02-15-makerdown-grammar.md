@@ -18,6 +18,8 @@ Markdown是一个将文本转化为HTML的工具。简单来说，Markdown是一
 [Markdown中文版语法说明](http://wowubuntu.com/markdown/#list)
 </pre>
 
+<!--break-->
+
 ## 标题
 Markdown提供了两种方式（Setext和Atx）来显示标题。
 
