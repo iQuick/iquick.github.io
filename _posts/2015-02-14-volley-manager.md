@@ -12,8 +12,12 @@ published:	true
 
 ## 简介
 本例基于Volley库扩展，RequestManager类管理应用请求， ImageCacheManager类加载图片及图片缓存管理
+
 结构如下：
-![结构][image/volley-manager-structure.jpg]
+
+![结构](image/volley-manager-structure.jpg)
+
+<!-- break -->
 
 ## 核心类简介
 ### 1.RequestManager.java
@@ -252,4 +256,4 @@ public byte[] getBody() throws AuthFailureError {
 </pre>
 
 
-Github：[https://github.com/iQuick/VolleyManager][https://github.com/iQuick/VolleyManager]
+Github：[https://github.com/iQuick/VolleyManager](https://github.com/iQuick/VolleyManager)
