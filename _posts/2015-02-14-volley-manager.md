@@ -17,7 +17,7 @@ published:	true
 
 ![结构](image/volley-manager-structure.jpg)
 
-<!-- break -->
+<!--break-->
 
 ## 核心类简介
 ### 1.RequestManager.java
