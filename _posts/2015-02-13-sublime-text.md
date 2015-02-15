@@ -61,7 +61,7 @@ https://github.com/buymeasoda/soda-theme
 
 ## 插件
 ###安装包控制（Package Control）
-打开Sublime Text 2，Ctrl + ` 调出控制台Console；
+打开Sublime Text，Ctrl + ` 调出控制台Console；
 
 将以下代码粘贴进命令行中并回车：
 
@@ -69,7 +69,7 @@ https://github.com/buymeasoda/soda-theme
 import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
 </pre>
 
-重启 Sublime Text 2，如果在 Preferences -> Package Settings中见到Package Control这一项，就说明安装成功了。
+重启 Sublime Text，如果在 Preferences -> Package Settings中见到Package Control这一项，就说明安装成功了。
 
 ###安装Alignment插件
 对于某些喜欢整齐的程序员来说，看到下面这种情况可能是让其无法忍受的：
@@ -85,7 +85,7 @@ var joe    = 'joe';
 var johnny = 'johnny';
 var quaid  = 'quaid';
 </pre>
-Sublime Text 2 之中，一个 Sublime Alignment 插件也可以轻松实现，传说最新版Sublime 已经集成。
+Sublime Text 之中，一个 Sublime Alignment 插件也可以轻松实现，传说最新版Sublime 已经集成。
 
 1.按下 Ctrl + Shift + P 调出命令面板。
 
@@ -93,7 +93,7 @@ Sublime Text 2 之中，一个 Sublime Alignment 插件也可以轻松实现，�
 
 3.在列表中找到 Alignment，按下回车进行安装。
 
-4.重启 Sublime Text 2 使之生效。现在通过选中文本并按 Ctrl + Shift + A 就可以进行对齐操作了。
+4.重启 Sublime Text 使之生效。现在通过选中文本并按 Ctrl + Shift + A 就可以进行对齐操作了。
 
 ###Sublime CodeIntel
 
