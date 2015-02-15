@@ -14,6 +14,7 @@ Markdown是一个将文本转化为HTML的工具。简单来说，Markdown是一
 ## Markdown 官方文档
 这里可以看到官方的 Markdown 语法规则文档，当然，后文我也会用自己的方式阐述这些语法的具体用法。
 >[创始人John Gruber的Markdown语法说明](http://daringfireball.net/projects/markdown/syntax)
+
 >[Markdown中文版语法说明](http://wowubuntu.com/markdown/#list)
 
 <!--break-->
