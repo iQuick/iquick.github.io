@@ -1,14 +1,14 @@
 ---
 layout:		post
-title:		基于Volley的网络请求的简单封闭
+title:		Volley的简单封装
 category:	[Android]
 tags:		[Android, Volley]
 published:	true
 ---
-# 基于Volley的网络请求的简单封闭
+# 基于Volley的网络请求的简单封装
 ---
 
-最近写一直在用Google的Volley做网络请求部分，但是Volley源码只有简单的通信，如果需要上传文件、图片时就需要时就稍微复杂了，于是自己就对Volley进入了简单的封装。
+最近写一直在用Google的Volley做网络请求部分，但是Volley源码只有简单的通信，如果需要上传文件、图片时就需要时就稍微复杂了，于是自己就对Volley进行了简单的封装。
 
 ## 简介
 本例基于Volley库扩展，RequestManager类管理应用请求， ImageCacheManager类加载图片及图片缓存管理
