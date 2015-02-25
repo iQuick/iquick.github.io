@@ -15,7 +15,7 @@ published:	true
 
 结构如下：
 
-![结构]({{ BASE_PATH }}/image/volley-manager-structure.jpg)
+![结构]({{ BASE_PATH }}/images/volley-manager-structure.jpg)
 
 <!--break-->
 
