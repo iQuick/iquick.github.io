@@ -23,7 +23,7 @@ Markdown是一个将文本转化为HTML的工具。简单来说，Markdown是一
 Markdown提供了两种方式（Setext和Atx）来显示标题。
 
 ### 语法：
-<pre class="prettyprint linenums">
+<pre>
 Setext方式
 标题1
 =================
@@ -62,7 +62,7 @@ Atx方式
 
 ## 引用
 ### 语法：
-<pre class="prettyprint linenums">
+<pre>
 > 这是一个引用，
 > 这里木有换行，   
 > 在这里换行了。
@@ -78,7 +78,7 @@ Atx方式
 ##列表
 无序列表使用*、+或-后面加上空格来表示。
 ### 语法：
-<pre class="prettyprint linenums">
+<pre>
 * Item 1
 * Item 2
 * Item 3
@@ -107,7 +107,7 @@ Atx方式
 
 有序列表使用数字加英文句号加空格表示。
 ### 语法：
-<pre class="prettyprint linenums">
+<pre>
 1. Item 1
 2. Item 2
 3. Item 3
@@ -122,7 +122,7 @@ Atx方式
 行内代码使用反斜杠`表示。
 代码段落则是在每行文字前加4个空格或者1个缩进符表示。
 ### 语法：
-<pre class="prettyprint linenums">
+<pre>
 Bash中可以使用echo来进行输出。
     $ echo 'Something'
     $ echo -e '\tSomething\n'
@@ -136,7 +136,7 @@ Bash中可以使用echo来进行输出。
 ## 强调
 Markdown使用\*或\_表示强调。
 ### 语法：
-<pre>
+<pre >
 单星号 = *斜体*
 单下划线 = _斜体_
 双星号 = **加粗**
@@ -155,16 +155,16 @@ Markdown支持两种风格的链接：Inline和Reference。
 **Inline**：以中括号标记显示的链接文本，后面紧跟用小括号包围的链接。如果链接有title属性，则在链接中使用空格加"title属性"。
 **Reference**：一般应用于多个不同位置使用相同链接。通常分为两个部分，调用部分为[链接文本][ref]；定义部分可以出现在文本中的其他位置，格式为[ref]: http://some/link/address (可选的标题)。
 **注**：ref中不区分大小写。
-<pre class="prettyprint linenums">
-这是一个Inline[示例](http://equation85.github.com "可选的title")。
+<pre>
+这是一个Inline[示例](https://github.com/iQuick "可选的title")。
 这是一个Reference[示例][ref]。
-[ref]: http://equation85.github.com
+[ref]: https://github.com/iQuick
 </pre>
 
 ### 效果：
-这是一个Inline[示例](http://equation85.github.com "可选的title")。
+这是一个Inline[示例](https://github.com/iQuick "可选的title")。
 这是一个Reference[示例][ref]。
-[ref]: http://equation85.github.com
+[ref]: https://github.com/iQuick
 
 ## 图片
 图片的使用方法基本上和链接类似，只是在中括号前加叹号。
@@ -175,18 +175,18 @@ Markdown支持两种风格的链接：Inline和Reference。
 Inline示例：![替代文本](/assets/images/jian.jpg "可选的title")
 Reference示例：![替代文本][pic]
 [pic]: /assets/images/ship.jpg "可选的title"
-HTML示例：<img src="/assets/images/jian.jpg" alt="替代文本" title="标题文本" width="200" />
+HTML示例：<img src="{{ BASE_PATH }}/images/avatar.jpg" alt="替代文本" title="标题文本" width="200" />
 </pre>
 
 ### 效果：
 Inline示例：![替代文本](/assets/images/jian.jpg "可选的title")
 Reference示例：![替代文本][pic]
 [pic]: /assets/images/ship.jpg "可选的title"
-HTML示例：<img src="/assets/images/jian.jpg" alt="替代文本" title="标题文本" width="200" />
+HTML示例：<img src="{{ BASE_PATH }}/images/avatar.jpg" alt="替代文本" title="标题文本" width="200" />
 
 ## 表格
 ### 语法：
-<pre class="prettyprint linenums">
+<pre>
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
 | col 3 is      | right-aligned | $1600 |
@@ -212,7 +212,7 @@ HTML示例：<img src="/assets/images/jian.jpg" alt="替代文本" title="标题
 ### 转义字符
 Markdown中的转义字符为\，可以转义的有：
 
-<pre class="prettyprint linenums">
+<pre>
 \\ 反斜杠
 \` 反引号
 \* 星号
