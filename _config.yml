@@ -84,7 +84,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : http://www.tornadoli.com/
+      short_name : tornadoli
  #   livefyre :
  #     site_id : 123
  #   intensedebate :
