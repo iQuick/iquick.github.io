@@ -11,13 +11,15 @@ safe: false
 # so be sure to set them if your theme uses them.
 #
 title : 风一样的男人
-tagline: Site Tagline
+tagline: 专注Android各种干货分享
 author :
   name : IQuick
+  description: Android Developer, Google Fans, Like OpenSource
   email : liz3002@126.com
   github : http://github.com/iQuick
   twitter : username
   feedburner : feedname
+  simple_search: http://google.com/search
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
