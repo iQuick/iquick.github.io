@@ -84,9 +84,11 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : disqus
-    disqus :
-      short_name : tornadoli
+    provider : duoshuo
+    duoshuo :
+      short_name : imli 
+ #   disqus :
+ #     short_name : tornadoli
  #   livefyre :
  #     site_id : 123
  #   intensedebate :
