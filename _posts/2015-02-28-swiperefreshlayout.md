@@ -12,8 +12,10 @@ published:	true
 
 <!--break-->
 
+### 新样式
 ![新的]({{ BASE_PATH }}/images/swiperefreshlayout-1.gif)
 
+### 旧样式
 ![旧的]({{ BASE_PATH }}/images/swiperefreshlayout-2.gif)
 
 ## 使用
