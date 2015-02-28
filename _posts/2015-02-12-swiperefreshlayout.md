@@ -10,6 +10,8 @@ published:	true
 
 最近看到好多应用都在使用这种下拉刷新，于是自己搜索了一下，原来这玩意儿是Google提供的SwipeRefreshLayout控件，以前也使用过家伙，但是效果不是这个样子的，是下图的样子，现在Google又改变了其效果
 
+<!--break-->
+
 ![新的]({{ BASE_PATH }}/images/swiperefreshlayout-1.gif)
 ![旧的]({{ BASE_PATH }}/images/swiperefreshlayout-2.gif)
 
