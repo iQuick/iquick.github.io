@@ -12,8 +12,7 @@ published:	true
 
 <!--break-->
 
-![新的]({{ BASE_PATH }}/images/swiperefreshlayout-1.gif)
-![旧的]({{ BASE_PATH }}/images/swiperefreshlayout-2.gif)
+![新的]({{ BASE_PATH }}/images/swiperefreshlayout-1.gif=200*355)   ![旧的]({{ BASE_PATH }}/images/swiperefreshlayout-2.gif=200*355)
 
 ## 使用
 <pre class="prettyprint linenums">
