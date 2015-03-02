@@ -21,6 +21,8 @@ published: true # default true
 ---
 </pre>
 
+<!--break-->
+
 ## 语法
 
 ### 使用变量
@@ -31,8 +33,6 @@ page.title
 </pre>
 
 具体变量请参照：[Jekyll简介]({{ BASE_PATH }}/2015/03/03/jekyll-introduce)
-
-<!--break-->
 
 ### 字符转义
 有时候想输出 { 了,怎么办,使用 \ 转义即可.
