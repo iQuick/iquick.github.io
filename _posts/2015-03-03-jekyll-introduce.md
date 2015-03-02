@@ -36,10 +36,10 @@ github 为我们提供了这个一个地方, 可以使用 jekyll 做一个我们
 |   └── 2009-04-26-barcamp-boston-4-roundup.textile
 ├── _site/
 ├── about/
-|   └── index.html  # => http://tiankonguse.github.io/about/
+|   └── index.html
 ├── contact/
-|   └── index.html  # => http://tiankonguse.github.io/contact/
-└── index.html      # => http://tiankonguse.github.io/
+|   └── index.html
+└── index.html
 </pre>
 
 * **config.yml** 保存配置数据。很多配置选项都可以直接在命令行中进行设置，但是如果你把那些配置写在这儿，你就不用非要去记住那些命令了。
