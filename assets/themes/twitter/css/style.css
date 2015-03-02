@@ -16,7 +16,7 @@ table {
 th {  
    font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;  
    color: #ccc;  
-   border: 1px solid #C1DAD7; 
+   border: 1px solid #ccc; 
    letter-spacing: 2px;  
    text-transform: uppercase;  
    text-align: center;  
