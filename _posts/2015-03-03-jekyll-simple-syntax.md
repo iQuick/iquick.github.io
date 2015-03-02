@@ -3,7 +3,7 @@ layout:		post
 title:		Jekyll简单语法
 category:	[Jekyll]
 tags:		[Jekyll]
-published:	false
+published:	true
 ---
 # Jekyll简单语法
 ---
@@ -36,104 +36,103 @@ page.title
 
 ### 字符转义
 有时候想输出 { 了,怎么办,使用 \ 转义即可.
-
 <pre class="prettyprint">
 \{ => {
 </pre>
 
+**注** 去掉“{ {”或“{ %”中的空格，下列如同
+
 ### 输出变量
 输出变量直接使用两个大括号括起来即可.
-
 <pre class="prettyprint">
-\{\{ page.title \}\}
+{ { page.title } }
 </pre>
 
 ### 循环
 和平常的解释性语言很想.
-
 <pre class="prettyprint">
-\{\% for post in site.posts \%\}
- 	<a class="fa fa-link" href="\{\{ BASE_PATH \}\}\{\{ post.url \}\}">\{\{ post.title \}\}</a>
-\{\% endfor \%\}
+{ % for post in site.posts % }
+	<a href="http://blog/2014/11/10/jekyll-study/{ { post.url } }">{ { post.title } }</a>
+{ % endfor % }
 </pre>
 
 ### 自动生成摘要
 <pre class="prettyprint">
- \{\% for post in site.posts \%\}
-	\{\{ post.url \}\} \{\{ post.title \}\}
-	\{\{ post.excerpt | remove: 'test' \}\}
-\{\% endfor \%\}
+{ % for post in site.posts % }
+	{ { post.url } } { { post.title } }
+	{ { post.excerpt | remove: 'test' } }
+{ % endfor % }
 </pre>
 
 ### 删除指定文本
 remove 可以删除变量中的指定内容
 <pre class="prettyprint">
-\{\{ post.url | remove: 'http' \}\}
+{ { post.url | remove: 'http' } }
 </pre>
 
 ### 删除 html 标签
 这个在摘要中很有用.
 <pre class="prettyprint">
-\{\{ post.excerpt | strip_html \}\}
+{ { post.excerpt | strip_html } }
 </pre>
 
 ### 代码高亮
 <pre class="prettyprint">
-\{\% highlight ruby linenos \%\}
+{ % highlight ruby linenos % }
 \# some ruby code
-\{\% endhighlight \%\}
+{ % endhighlight % }
 </pre>
 
 
 ### 数组的大小
 <pre class="prettyprint">
-\{ \{ array | size \} \}
+{ { array | size } }
 </pre>
 
 ### 赋值
 <pre class="prettyprint">
-\{\% assign index = 1 \%\}
+{ % assign index = 1 % }
 </pre>
 
 ### 格式化时间
 <pre class="prettyprint">
-\{\{ site.time | date_to_xmlschema \}\} 2008-11-07T13:07:54-08:00
-\{\{ site.time | date_to_rfc822 \}\} Mon, 07 Nov 2008 13:07:54 -0800
-\{\{ site.time | date_to_string \}\} 07 Nov 2008
-\{\{ site.time | date_to_long_string \}\} 07 November 2008
+{ { site.time | date_to_xmlschema } } 2014-01-07T13:07:54-08:00
+{ { site.time | date_to_rfc822 } } Mon, 01 Nov 2014 13:07:54 -0800
+{ { site.time | date_to_string } } 01 Nov 2014
+{ { site.time | date_to_long_string } } 01 November 2014
 </pre>
 
 ### 搜索指定key
 <pre class="prettyprint">
 # Select all the objects in an array where the key has the given value.
-\{\{ site.members | where:"graduation_year","2014" \}\} 
+{ { site.members | where:"graduation_year","2014" } }
 </pre>
 
 ### 排序
 <pre class="prettyprint">
-\{\{ site.pages | sort: 'title', 'last' \}\}
+{ { site.pages | sort: 'title', 'last' } }
 </pre>
 
 ### to json
 <pre class="prettyprint">
-\{\{ site.data.projects | jsonify \}\}
+{ { site.data.projects | jsonify } }
 </pre>
 
 ### 序列化
 把一个对象变成一个字符串
 <pre class="prettyprint">
-\{\{ page.tags | array_to_sentence_string \}\}
+{ { page.tags | array_to_sentence_string } }
 </pre>
 
 ### 单词的个数
 <pre class="prettyprint">
-\{\{ page.content | number_of_words \}\}
+{ { page.content | number_of_words } }
 </pre>
 
 ### 指定个数
 得到数组指定范围的结果集
 <pre class="prettyprint">
-\{\% for post in site.posts limit:20 \%\}
+{ % for post in site.posts limit:20 % }
 </pre>
 
 ### 内容名字规范
