@@ -2,15 +2,30 @@
 layout: page
 title: 页面 
 header: Pages
-group: navigation
 ---
 {% include JB/setup %}
 
 <div class = "card">
-	<h2 class="hat_title">快速入口</h2>
+	<h2>导航</h2>
 	<ul>
-	{% assign pages_list = site.pages %}
-	{% include JB/pages_list %}
+		<li><a href="{{ HOME_PATH }}">首页</a></li>
+		<li><a href="{{ BASE_PATH }}/archive.html">文章</a></li>
+		<li><a href="{{ BASE_PATH }}/categories.html">分类</a></li>
+		<li><a href="{{ BASE_PATH }}/tags.html">标签</a></li>
+		<li><a href="{{ BASE_PATH }}/about.html">关于</a></li>
+	</ul>
+	</br>
+	
+	<h2>订阅</h2>
+	<ul>
+		<li><a a href="{{ BASE_PATH }}/rss.xml">Rss Feed</a></li>
+		<li><a a href="{{ BASE_PATH }}/atom.xml">Atom Feed</a></li>
+	</ul>
+	</br>
+	
+	<h2>网站地图</h2>
+	<ul>
+		<li><a a href="{{ BASE_PATH }}/sitemap.txt">SiteMap</a></li>
 	</ul>
 </div>
 
