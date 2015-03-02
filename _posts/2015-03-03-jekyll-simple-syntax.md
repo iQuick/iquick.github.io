@@ -3,7 +3,7 @@ layout:		post
 title:		Jekyll简单语法
 category:	[Jekyll]
 tags:		[Jekyll]
-published:	true
+published:	false
 ---
 # Jekyll简单语法
 ---
@@ -66,9 +66,9 @@ page.title
 </pre>
 
 ### 删除指定文本
+remove 可以删除变量中的指定内容
 <pre class="prettyprint">
-	remove 可以删除变量中的指定内容
-	\{\{ post.url | remove: 'http' \}\}
+\{\{ post.url | remove: 'http' \}\}
 </pre>
 
 ### 删除 html 标签
