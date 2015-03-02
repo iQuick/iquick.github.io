@@ -12,6 +12,8 @@ published:	true
 
 ![PullListView]({{ BASE_PATH }}/images/pulllistview.gif)
 
+<!--break-->
+
 ## 使用
 用法与平常的ListView一样
 <pre class="prettyprint linenums">
