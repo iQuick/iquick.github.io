@@ -19,8 +19,7 @@ published:	true
 xml 布局文件
 
 <pre class="prettyprint linenums">
-
-&lt; ?xml version="1.0" encoding="utf-8"? >
+&lt;?xml version="1.0" encoding="utf-8"?>
 &lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
@@ -39,10 +38,7 @@ xml 布局文件
         android:text="截取" />
 
 &lt;/RelativeLayout>
-
 </pre>
-
-
 
 CutAvatarActivity 代码
 
@@ -82,8 +78,6 @@ public class CutAvatarActivity extends Activity {
 	
 }
 </pre>
-
-
 
 ## 核心代码
 <pre class="prettyprint linenums">
@@ -188,8 +182,6 @@ protected void checkBoundary(Matrix matrix) {
 }
 </pre>
 
-
-
 ## 截取头像部分代码
 <pre class="prettyprint linenums">
 	
@@ -230,12 +222,8 @@ public Bitmap clip(boolean isCircle) {
 }
 </pre>
 
-
-
 ## Github
 [https://github.com/iQuick/QQCutAvatar](https://github.com/iQuick/QQCutAvatar)
-
-
 
 ## 类似参考
 
