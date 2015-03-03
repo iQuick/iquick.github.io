@@ -42,7 +42,7 @@
        <div class="nav-narrow">
           <a class="brand" href="{{ HOME_PATH }}"><span class="fa fa-send (alias)">  {{ site.title }}</span></a>
           <ul class="nav">
-            {% assign pages_list = site.pages %}
+            {% assign pages_list = {{site.pages | sort: 'index'}} %}
             {% assign group = 'navigation' %}
             {% include JB/pages_list %}
           </ul>

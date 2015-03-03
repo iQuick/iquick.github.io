@@ -5,6 +5,37 @@ h1{
 .fa.fa-arrow-circle-right{
     margin-right: 15px;
 }
+
+/* -----表格样式----- */
+table {   
+    padding: 0;
+    margin: 0;   
+    border-collapse:collapse;
+}
+
+th {  
+   font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;  
+   color: #ccc;  
+   border: 1px solid #ccc; 
+   letter-spacing: 2px;  
+   text-transform: uppercase;  
+   text-align: center;  
+   padding: 6px 6px 6px 12px;  
+}  
+
+td {
+    border: 1px solid #ccc;   
+    background: #fff;
+    font-size:11px;
+    padding: 6px 6px 6px 12px;
+    color: #4f6b72;
+}
+
+td.alt {
+    background: #F5FAFA;
+    color: #797268;
+}
+/* -------------- */
  
 /*navbar bgcolor -- float*/
 .navbar .navbar-inner{ 
