@@ -12,11 +12,15 @@ published:	true
 
 ![CutAvatarView]({{BASE_PATH}}/images/cut-avatar.jpg)
 
+<!--break-->
+
 ## 使用
 
 xml 布局文件
 
 <pre class="prettyprint linenums">
+
+<!--
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -36,6 +40,8 @@ xml 布局文件
         android:text="截取" />
 
 </RelativeLayout>
+-->
+
 </pre>
 
 CutAvatarActivity 代码
@@ -44,10 +50,7 @@ CutAvatarActivity 代码
 public class CutAvatarActivity extends Activity {
 	
 	public static Bitmap bitmap;
-
-	
 	private CutAvatarView mCutAvatarView;
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,8 @@ public class CutAvatarActivity extends Activity {
 	
 }
 </pre>
+
+
 
 ## 核心代码
 <pre class="prettyprint linenums">
@@ -184,6 +189,7 @@ protected void checkBoundary(Matrix matrix) {
 </pre>
 
 
+
 ## 截取头像部分代码
 <pre class="prettyprint linenums">
 	
@@ -224,8 +230,12 @@ public Bitmap clip(boolean isCircle) {
 }
 </pre>
 
+
+
 ## Github
 [https://github.com/iQuick/QQCutAvatar](https://github.com/iQuick/QQCutAvatar)
+
+
 
 ## 类似参考
 
