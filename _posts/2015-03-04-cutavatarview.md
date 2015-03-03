@@ -20,18 +20,17 @@ xml 布局文件
 
 <pre class="prettyprint linenums">
 
-<!--
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+&lt; ?xml version="1.0" encoding="utf-8"? >
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <me.imli.qqcutavatar.view.CutAvatarView
+    &lt;me.imli.qqcutavatar.view.CutAvatarView
         android:id="@+id/cut_avatar_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <Button
+    &lt;Button
         android:id="@+id/btn_cut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,10 +38,11 @@ xml 布局文件
         android:layout_alignParentRight="true"
         android:text="截取" />
 
-</RelativeLayout>
--->
+&lt;/RelativeLayout>
 
 </pre>
+
+
 
 CutAvatarActivity 代码
 
