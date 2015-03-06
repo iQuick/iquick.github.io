@@ -12,6 +12,10 @@ Android 4.4 增加了透明状态栏与导航栏的功能，处女座的福音�
 
 ![沉浸式状态栏与导航栏]({{ BASE_PATH }}/images/immerse-status-and-nav-1.jpg)
 
+
+<!--break-->
+
+
 ## 代码添加
 <pre class="prettyprint linenums">
 if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
@@ -22,7 +26,24 @@ if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
 }
 </pre>
 
-直接调用上面2行代码可以透明，但是你会发现你的 view 跑到 actionbar 上面去了，很明显 google 的意图是使你的 view 可以占据整个屏幕，然后 状态栏和导航栏 透明覆盖在上面很明显这样不可行。
+## 设置theme属性
+<pre class="prettyprint linenums">
+android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.TranslucentDecor"
+android:theme="@android:style/Theme.Holo.Light.NoActionBar.TranslucentDecor"
+android:theme="@android:style/Theme.Holo.NoActionBar.TranslucentDecor"
+</pre>
+
+自定主题，只需在在 values-19 -> style.xml 文件添加以下属性：
+
+<pre class="prettyprint linenums">
+&lt;style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+	&lt;!-- API 19 theme customizations can go here. -->
+	&lt;item name="android:windowTranslucentStatus">true</item>
+	&lt;item name="android:windowTranslucentNavigation">true</item>
+&lt;/style>
+</pre>
+
+直接调用上面方法可以透明，但是你会发现你的 view 跑到 actionbar 上面去了，很明显 google 的意图是使你的 view 可以占据整个屏幕，然后 状态栏和导航栏 透明覆盖在上面很明显这样不可行。
 
 那有没有办法使你的 view 保持原来大小呢？
 
@@ -39,20 +60,9 @@ android:clipToPadding="true"
 
 就是调用 actionbar 的 setPadding 方法，使其与顶部保持 20dp 左右的距离，效果还是不错的。
 
-<pre class="prettyprint linenums">
-android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.TranslucentDecor"
-android:theme="@android:style/Theme.Holo.Light.NoActionBar.TranslucentDecor"
-android:theme="@android:style/Theme.Holo.NoActionBar.TranslucentDecor"
-</pre>
-
-<pre class="prettyprint linenums">
-<style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-	<!-- API 19 theme customizations can go here. -->
-	<item name="android:windowTranslucentStatus">true</item>
-	<item name="android:windowTranslucentNavigation">true</item>
-</style>
-</pre>
 
 ## SystemBarTint
+
 https://github.com/jgilfelt/SystemBarTint
+
 可以设置 statusbar 背景，原理是在 Window 的 DocView 添加 view，大家可以下载这个项目学习如何使用
