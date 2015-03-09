@@ -2,7 +2,7 @@
 layout:		post
 title:		Android 沉浸式状态栏与导航栏
 category:	[Android]
-tags:		[Android, Volley]
+tags:		[Android]
 published:	true
 ---
 # Android 沉浸式状态栏与导航栏
