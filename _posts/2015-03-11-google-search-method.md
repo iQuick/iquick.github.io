@@ -30,9 +30,9 @@ published:	true
 
 * 爱谷搜 [http://gusou.bmob.cn](http://gusou.bmob.cn)
 
+  唯一一个提供使用谷歌搜索服务的Android App，方便手机用户使用谷歌。
 
 ---
-
 
 ## 翻墙工具
 
