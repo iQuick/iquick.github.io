@@ -14,10 +14,15 @@ published:	true
 * 谷搜客 [https://www.gusouk.com](https://www.gusouk.com)
 * FqGoogle [http://www.fqgoogle.com](http://www.fqgoogle.com)
 
+---
+
 ## 提供谷歌IP的网站
 
 * [http://www.xiexingwen.com/m.php](http://www.xiexingwen.com/m.php)
+  
   搜索后会自动跳转到一个可用的Google IP，读者可以使用这个IP，修改Hosts文件，就可以直接访问谷歌了
+
+---
 
 ## 上谷歌的Android App
 
@@ -28,4 +33,5 @@ published:	true
 * GoAgent [https://github.com/goagent/goagent](https://github.com/goagent/goagent)
 * GreatAgent [http://code.google.com/p/greatagent/wiki/downloads](http://code.google.com/p/greatagent/wiki/downloads)
 * 云梯VPN [http://maitizi.com/?r=278792710a07ebb7](http://maitizi.com/?r=278792710a07ebb7)
+  
   通过此链接注册并购买你我的帐户都会增加10元！
