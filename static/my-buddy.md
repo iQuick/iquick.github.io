@@ -22,3 +22,7 @@ group: static
 
 把自己照的好胖,好想打下马赛克。。
 
+* 老照片(最后再附上一张老照片)
+
+![哥们]({{ BASE_PATH }}/images/my-buddy-6.jpg)
+
