@@ -12,7 +12,7 @@ group: static
 
 ![哥们]({{ BASE_PATH }}/images/my-buddy-5.jpg)
 
-![哥们]({{ BASE_PATH }}/images/my-buddy-3.jpg)
+![哥们]({{ BASE_PATH }}/images/my-buddy-4.jpg)
 
 ![哥们]({{ BASE_PATH }}/images/my-buddy-2.jpg)
 
