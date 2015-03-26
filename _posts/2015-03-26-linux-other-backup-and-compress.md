@@ -16,7 +16,7 @@ published:	true
 
 dd 可以读取磁碟装置的内容(几乎是直接读取磁区"sector")，然后将整个装置备份成一个文件
 
-<pre>
+<pre class="prettyprint">
 dd if="input_file" of="output_file" bs="block_size" count="number"
 
 选项与参数：
@@ -29,7 +29,7 @@ count：多少个 bs 的意思。
 
 * 范例一：将 /etc/passwd 备份到 /tmp/passwd.back 当中
 
-<pre>
+<pre class="prettyprint">
 dd if=/etc/passwd of=/tmp/passwd.back
 
 ll /etc/passwd /tmp/passwd.back
@@ -41,7 +41,7 @@ ll /etc/passwd /tmp/passwd.back
 
 * 范例二：将自己的磁碟之第一个磁区备份下来
 
-<pre>
+<pre class="prettyprint">
 [root@www ~]# dd if=/dev/hdc of=/tmp/mbr.back bs=512 count=1
 1+0 records in
 1+0 records out
@@ -52,7 +52,7 @@ ll /etc/passwd /tmp/passwd.back
 
 * 范例三：找出你系统最小的那个分割槽，并且将他备份下来：
 
-<pre>
+<pre class="prettyprint">
 df -h
 
 dd if=/dev/hdc1 of=/tmp/boot.whole.disk
@@ -69,7 +69,7 @@ ll -h /tmp/boot.whole.disk
 
 cpio 可以备份任何东西，包括装置设备文件。不过 cpio 有个大问题， 那就是 cpio 不会主动的去找文件来备份。一般来说， cpio 得要配合类似 find 等可以找到档名的命令来告知 cpio 该被备份的数据在哪里。
 
-<pre>
+<pre class="prettyprint">
 cpio -ovcB  > [file|device] 	&lt;==备份
 cpio -ivcdu &lt; [file|device] 	&lt;==还原
 cpio -ivct  &lt; [file|device] 	&lt;==察看
@@ -89,7 +89,7 @@ cpio -ivct  &lt; [file|device] 	&lt;==察看
 
 范例：找出 /boot 底下的所有文件，然后将他备份到 /tmp/boot.cpio 去！
 
-<pre>
+<pre class="prettyprint">
 find /boot -print
 
 find /boot | cpio -ocvB > /tmp/boot.cpio

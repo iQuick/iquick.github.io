@@ -34,7 +34,7 @@ published:	true
 	* 且仅能使用 level 0 ，亦即仅支持完整备份而已；
 	* 不支持 -u 选项，亦即无法创建 /etc/dumpdates 这个各别 level 备份的时间记录档；
 
-<pre>
+<pre class="prettyprint">
 dump [-Suvj] [-level] [-f 备份档] 待备份数据
 dump -W
 
@@ -52,7 +52,7 @@ dump -W
 
 假如你要将系统的最小的文件系统捉出来进行备份，那该如何进行呢？
 
-<pre>
+<pre class="prettyprint">
 # 1. 先找出系统中最小的那个文件系统，如下所示：
 df -h
 
@@ -71,7 +71,7 @@ cat /etc/dumpdates
 
 现在让我们来进行一个测试，检查看看能否真的创建 level 1 的备份
 
-<pre>
+<pre class="prettyprint">
 # 0. 看一下有没有任何文件系统被 dump 过的数据？
 dump -W
 
@@ -94,7 +94,7 @@ dump -W
 
 用 dump 备份非文件系统，亦即单一目录的方法
 
-<pre>
+<pre class="prettyprint">
 # 让我们将 /etc 整个目录透过 dump 进行备份，且含压缩功能
 dump -0j -f /root/etc.dump.bz2 /etc
 </pre>
@@ -105,7 +105,7 @@ dump -0j -f /root/etc.dump.bz2 /etc
 
 备份档就是在急用时可以回复系统的重要数据，所以有备份当然就得要学学如何复原了！ dump 的复原使用的是 restore 这个命令！
 
-<pre>
+<pre class="prettyprint">
 restore -t [-f dumpfile] [-h]        &lt;==用来察看 dump 档
 restore -C [-f dumpfile] [-D 挂载点] &lt;==比较dump与实际文件
 restore -i [-f dumpfile]             &lt;==进入互动模式
@@ -126,7 +126,7 @@ restore -r [-f dumpfile]             &lt;==还原整个文件系统
 
 用 restore 观察 dump 后的备份数据内容
 
-<pre>
+<pre class="prettyprint">
 # 要找出 dump 的内容就使用 restore -t 来查阅即可！例如我们将 boot.dump 的文件内容捉出来看看！
 
 restore -t -f /root/boot.dump 
@@ -136,7 +136,7 @@ restore -t -f /root/etc.dump
 
 比较差异并且还原整个文件系统
 
-<pre>
+<pre class="prettyprint">
 # 0. 先尝试变更文件系统的内容：
 cd /boot
 mv config-2.6.18-128.el5 config-2.6.18-128.el5-back
@@ -151,7 +151,7 @@ cd /root
 
 如同上面的动作，透过曾经备份过的资讯，也可以找到与目前实际文件系统中有差异的数据呢！ 如果你不想要进行累积备份，但也能透过这个动作找出最近这一阵子有变动过的文件说！了解乎？ 那如何还原呢？由於 dump 是记录整个文件系统的，因此还原时你也应该要给予一个全新的文件系统才行。 
 
-<pre>
+<pre class="prettyprint">
 # 1. 先创建一个新的 partition 来使用，假设我们需要的是 150M 的容量
 fdisk /dev/hdc
 partprobe   &lt;==很重要的动作！别忘记！
@@ -168,7 +168,7 @@ restore -r -f /root/boot.dump
 仅还原部分文件的 restore 互动模式
 某些时候你只是要将备份档的某个内容捉出来而已，并不想要全部解开，那该如何是好？此时你可以进入 restore 的互动模式 (interactive mode)。
 
-<pre>
+<pre class="prettyprint">
 cd /mnt
 restore -i -f /root/etc.dump
 </pre>

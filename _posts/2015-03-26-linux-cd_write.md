@@ -19,7 +19,7 @@ published:	true
 
 ## mkisofs：创建映像档
 
-<pre>
+<pre class="prettyprint">
 mkisofs [-o 映像档] [-rv] [-m file] 待备份文件.. [-V vol]  -graft-point isodir=systemdir ...
 
 选项与参数：
@@ -29,7 +29,7 @@ mkisofs [-o 映像档] [-rv] [-m file] 待备份文件.. [-V vol]  -graft-point 
 -m file ：-m 为排除文件 (exclude) 的意思，后面的文件不备份到映像档中
 -V vol  ：创建 Volume，有点像 Windows 在文件总管内看到的 CD title 的东西
 -graft-point：graft有转嫁或移植的意思，相关数据在底下文章内说明。
-</pre>
+</pre class="prettyprint">
 
 一般默认的情况下，所有要被加到映像档中的文件都会被放置到映象档中的根目录，如此一来可能会造成烧录后的文件分类不易的情况。所以，你可以使用 -graft-point 这个选项，当你使用这个选项之后， 可以利用如下的方法来定义位於映像档中的目录，例如：
 
@@ -39,7 +39,7 @@ mkisofs [-o 映像档] [-rv] [-m file] 待备份文件.. [-V vol]  -graft-point 
 
 ## cdrecord：光盘烧录工具
 
-<pre>
+<pre class="prettyprint">
 cdrecord -scanbus dev=ATA                  &lt;==查询烧录机位置
 cdrecord -v dev=ATA:x,y,z blank=[fast|all] &lt;==抹除重复读写片
 cdrecord -v dev=ATA:x,y,z -format          &lt;==格式化DVD+RW
@@ -66,13 +66,13 @@ blank=[fast|all]：blank 为抹除可重复写入的CD/DVD-RW，使用fast较快
 
 文字模式的烧录确实是比较麻烦的，因为没有所见即所得的环境嘛！要烧录首先就得要找到烧录机才行！ 而由於早期的烧录机都是使用SCSI 介面，因此查询烧录机的方法就得要配合著 SCSI 介面的认定来处理了。 查询烧录机的方式为：
 
-<pre>
+<pre class="prettyprint">
 cdrecord -scanbus dev=ATA
 </pre>
 
 进行 CD 的烧录动作：
 
-<pre>
+<pre class="prettyprint">
 # 0. 先抹除光盘的原始内容：(非可重复读写则可略过此步骤)
 cdrecord -v dev=ATA:1,1,0 blank=fast
 
