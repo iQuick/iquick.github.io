@@ -2,4 +2,4 @@
 User-agent: *
 Disallow: 
 Disallow: /static
-Sitemap:http://www.imli.com/sitemap.txt
+Sitemap:http://www.imli.me/sitemap.txt
