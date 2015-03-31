@@ -4,7 +4,7 @@ title:		九宫格抽奖控件 LuckyDrawView
 tags:		[Android]
 published:	true
 ---
-# Android 沉浸式状态栏与导航栏
+# 九宫格抽奖控件 LuckyDrawView
 ---
 
 今天正好需要写一个九宫格抽奖的部分，在网上搜索了一番，感觉使用起来不太方便，于是便自己动手写了一个。
@@ -19,7 +19,7 @@ published:	true
 
 <pre>
 
-<cn.uue.yixiaoba.widget.luckydraw.LuckyDrawView
+&lt;cn.uue.yixiaoba.widget.luckydraw.LuckyDrawView
     android:id="@+id/ldv_campaign_luck_draw"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
