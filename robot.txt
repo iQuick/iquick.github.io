@@ -1,2 +1,5 @@
+# robots.txt generated at http://www.aizhan.com
 User-agent: *
-Disallow:
+Disallow: 
+Disallow: /static
+Sitemap:http://imli.com/sitemap.txt
