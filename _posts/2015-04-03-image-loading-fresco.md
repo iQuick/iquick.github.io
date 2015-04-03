@@ -61,23 +61,23 @@ Android有另外一种内存区域，叫做Ashmem。它操作起来更像Native�
 我们使用像这样的系统把Producer联系起来。假设我们有一个producer的工作是把类型I转化为类型O，那么它看起来应该是这个样子：
 
 <pre class="prettyprint linenums">
-public class OutputProducer<I, O> implements Producer<O> {
+public class OutputProducer&lt;I, O> implements Producer&lt;O> {
  
-  private final Producer<I> mInputProducer;
+  private final Producer&lt;I> mInputProducer;
  
-  public OutputProducer(Producer<I> inputProducer) {
+  public OutputProducer(Producer&lt;I> inputProducer) {
     this.mInputProducer = inputProducer;
   }
  
-  public void produceResults(Consumer<O> outputConsumer, ProducerContext context) {
-    Consumer<I> inputConsumer = new InputConsumer(outputConsumer);
+  public void produceResults(Consumer&lt;O> outputConsumer, ProducerContext context) {
+    Consumer&lt;I> inputConsumer = new InputConsumer(outputConsumer);
     mInputProducer.produceResults(inputConsumer, context);
   }
  
-  private static class InputConsumer implements Consumer<I> {
-    private final Consumer<O> mOutputConsumer;
+  private static class InputConsumer implements Consumer&lt;I> {
+    private final Consumer&lt;O> mOutputConsumer;
  
-    public InputConsumer(Consumer<O> outputConsumer) {
+    public InputConsumer(Consumer&lt;O> outputConsumer) {
       mOutputConsumer = outputConsumer;
     }
  
