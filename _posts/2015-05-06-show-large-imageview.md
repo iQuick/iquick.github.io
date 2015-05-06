@@ -14,7 +14,7 @@ Anroid 显示长图
 
 以下是源码
 
-<pre class="printprtty linenum">
+<pre class="prettyprint linenums">
 package cn.uue.yixiaoba.widget;
 
 import java.io.ByteArrayInputStream;
