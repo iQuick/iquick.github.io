@@ -21,14 +21,20 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import cn.uue.yixiaoba.util.LogUtil;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -78,17 +84,20 @@ public class LargeImageView extends ImageView {
 		setMeasuredDimension(Math.max(width, mWidth), Math.max(height, mHeight));
 	}
 	
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD_MR1)
 	private void canvasLarge(Canvas canvas, BitmapRegionDecoder decoder) {
-		int widthCount = decoder.getWidth() / MAX_WIDTH + (decoder.getWidth() % MAX_WIDTH == 0 ? 0 : 1);
-		int heightCount = decoder.getHeight() / MAX_HEIGHT + (decoder.getWidth() % MAX_HEIGHT == 0 ? 0 : 1);
-		
-		for (int i = 0; i < heightCount; i++) {
-			for (int j = 0; j < widthCount; j++) {
-				Rect rect = new Rect(j * MAX_WIDTH, i * MAX_HEIGHT, ((j + 1) * MAX_WIDTH < decoder.getWidth()) ? (j + 1) * MAX_WIDTH : decoder.getWidth(), ((i + 1) * MAX_HEIGHT < decoder.getHeight()) ? (i + 1) * MAX_HEIGHT : decoder.getHeight()); 
-				Bitmap bitmap = decoder.decodeRegion(rect, null);
-				Matrix matrix = new Matrix();
-				matrix.postScale(mScale, mScale); // 长和宽放大缩小的比例
-				canvas.drawBitmap(Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true), rect.left  * mScale, rect.top * mScale, null);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1) {
+			int widthCount = decoder.getWidth() / MAX_WIDTH + (decoder.getWidth() % MAX_WIDTH == 0 ? 0 : 1);
+			int heightCount = decoder.getHeight() / MAX_HEIGHT + (decoder.getWidth() % MAX_HEIGHT == 0 ? 0 : 1);
+			
+			for (int i = 0; i < heightCount; i++) {
+				for (int j = 0; j < widthCount; j++) {
+					Rect rect = new Rect(j * MAX_WIDTH, i * MAX_HEIGHT, ((j + 1) * MAX_WIDTH < decoder.getWidth()) ? (j + 1) * MAX_WIDTH : decoder.getWidth(), ((i + 1) * MAX_HEIGHT < decoder.getHeight()) ? (i + 1) * MAX_HEIGHT : decoder.getHeight()); 
+					Bitmap bitmap = decoder.decodeRegion(rect, null);
+					Matrix matrix = new Matrix();
+					matrix.postScale(mScale, mScale); // 长和宽放大缩小的比例
+					canvas.drawBitmap(Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true), rect.left  * mScale, rect.top * mScale, null);
+				}
 			}
 		}
 	}
@@ -97,16 +106,19 @@ public class LargeImageView extends ImageView {
 	 * set image from InputStream
 	 * @param stream
 	 */
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD_MR1)
 	public void setImageStream(InputStream stream) {
-		try {
-			mBitmapRegionDecoder = BitmapRegionDecoder.newInstance(stream, true);
-			mWidth = mBitmapRegionDecoder.getWidth();
-			mHeight = mBitmapRegionDecoder.getHeight();
-			requestLayout();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1) {
+			try {
+				mBitmapRegionDecoder = BitmapRegionDecoder.newInstance(stream, true);
+				mWidth = mBitmapRegionDecoder.getWidth();
+				mHeight = mBitmapRegionDecoder.getHeight();
+				requestLayout();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		invalidate();
 	}
@@ -134,14 +146,25 @@ public class LargeImageView extends ImageView {
 	 */
 	@Override
 	public void setImageDrawable(Drawable drawable) {
-//		super.setImageDrawable(drawable);
+		try {
+			this.setImageBitmap(drawableToBitamp(drawable));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	protected void onDraw(Canvas canvas) {
+		canvas.drawColor(0xffffffff);
 		if (mBitmapRegionDecoder != null) {
 			canvasLarge(canvas, mBitmapRegionDecoder);
 		}
+	}
+	
+	@Override
+	public Drawable getDrawable() {
+		// TODO Auto-generated method stub
+		return super.getDrawable();
 	}
 	
 	/**
@@ -164,7 +187,27 @@ public class LargeImageView extends ImageView {
 		return baos.toByteArray();    
 	}
 	
+	
+	/**
+	 * Drawable 转 Bitmap
+	 * @param drawable
+	 * @return
+	 */
+	private Bitmap drawableToBitamp(Drawable drawable) {
+        int w = drawable.getIntrinsicWidth();
+        int h = drawable.getIntrinsicHeight();
+        Bitmap.Config config = 
+                drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                        : Bitmap.Config.RGB_565;
+        Bitmap bitmap = Bitmap.createBitmap(w,h,config);
+        //注意，下面三行代码要用到，否在在View或者surfaceview里的canvas.drawBitmap会看不到图
+        Canvas canvas = new Canvas(bitmap);   
+        drawable.setBounds(0, 0, w, h);   
+        drawable.draw(canvas);
+        return bitmap;
+	}
 }
+
 
 </pre>
 
