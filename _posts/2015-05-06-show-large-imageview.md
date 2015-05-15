@@ -1,11 +1,11 @@
 ---
 layout:		post
-title:		Anroid 显示长图的问题
-category:	[Anroid]
-tags:		[Anroid]
+title:		Android 显示长图的问题
+category:	[Android]
+tags:		[Android]
 published:	true
 ---
-Anroid 显示长图
+Android 显示长图
 ---
 
 最近在做一个项目，由于许多地方需要显示图片。大部分都是那种长图片，但是有些机器只支持显示最大图片 2048 * 2048 ，所以在部分机器测试的就出现问题了。由于图片的宽度不大，又不能缩放，就只能截取 Bitmap 中的部分并绘制的方法。
