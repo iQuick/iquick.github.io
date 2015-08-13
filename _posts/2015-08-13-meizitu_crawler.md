@@ -12,7 +12,7 @@ published:	true
 
 <!--break-->
 
-&<pre class="prettyprint linenums">
+<pre class="prettyprint linenums">
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
