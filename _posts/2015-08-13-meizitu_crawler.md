@@ -149,4 +149,4 @@ dirIsCreate(MEIZI_DIR, MEIZI_PATH)
 downloadMeizitu(totalMeizi)
 
 print('Download complete the meizitu! Thank you for your use.')
-&lt;/pre>
+</pre>
