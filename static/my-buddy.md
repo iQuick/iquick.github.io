@@ -1,6 +1,6 @@
 ---
 layout: page
-title : 文章
+title : 我兄弟
 header : 所有文章
 group: static
 ---
