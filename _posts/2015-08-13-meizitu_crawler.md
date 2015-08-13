@@ -12,7 +12,7 @@ published:	true
 
 <!--break-->
 
-<pre class="prettyprint linenums">
+&<pre class="prettyprint linenums">
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
@@ -48,17 +48,17 @@ def getImageData(url):
 
 # 抓取妹子图片 Url
 def findMeizituUrl(data):
-	re_value = '<img src="(.*?)".*?/>'
+	re_value = '&lt;img src="(.*?)".*?/>'
 	return findallData(re_value, data)
 
 # 抓取妹子图片标题
 def findMeizituTitle(data):
-	re_value = '<div class="text"><p>(.*?)</p></div>'
+	re_value = '&lt;div class="text">&lt;p>(.*?)&lt;/p>&lt;/div>'
 	return findallData(re_value, data)
 
 # 查找对应妹子图的子分类 url
 def findMeizituChildUrl(data):
-	re_value = r'<a class="img" href="(.*?)">'
+	re_value = r'&lt;a class="img" href="(.*?)">'
 	return findallData(re_value, data)
 
 # 根据 re_value 查找
@@ -73,7 +73,7 @@ def findMeizituFeng(data):
 	meizi_child_list = findMeizituChildUrl(data)
 
 	for i in range(0, len(meizi_title_list)):
-		title = re.sub('<br />|&nbsp|;| ', '', meizi_title_list[i])
+		title = re.sub('&lt;br />|&nbsp|;| ', '', meizi_title_list[i])
 		url = meizi_url_list[i]
 		child = meizi_child_list[i]
 
@@ -149,4 +149,4 @@ dirIsCreate(MEIZI_DIR, MEIZI_PATH)
 downloadMeizitu(totalMeizi)
 
 print('Download complete the meizitu! Thank you for your use.')
-</pre>
+&lt;/pre>
