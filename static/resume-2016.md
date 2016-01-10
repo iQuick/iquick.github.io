@@ -6,37 +6,34 @@ group: static
 ---
 {% include JB/setup %}
 
-<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-
 <h1 id="简历">简历</h1>
 
 
 
 <h3 id="个人信息">个人信息</h3>
 
-<pre>
+<blockquote>
   <p>姓名：       李赞 <br>
   性别：       男 <br>
   籍贯：       湖北 <br>
   年龄：       24 <br>
   学历：       大专</p>
-</pre>
+</blockquote>
 
 
 
 <h3 id="工作经历">工作经历</h3>
 
-<pre>
+<blockquote>
   <p>2013/3 - 今：武汉易趣科技有限公司 <br>
   2015/7- 2015/8：在武大担任 Android 培训讲师</p>
-</pre>
+</blockquote>
 
 
 
 <h3 id="项目经历">项目经历</h3>
 
-<pre>
+<blockquote>
   <h4 id="洪荒">洪荒</h4>
   
   <p>开发工具：XCode + ios sdk + Cocos2d <br>
@@ -79,13 +76,13 @@ group: static
   <p>开发工具：XCode + ios sdk <br>
   项目职责：Android 端 及 ios 端框架设计及主要功能模块。 <br>
   描述：武汉市“智慧城市”建设专注打造的政府重点扶持项目，在全市布局政务、商圈、教育、医疗、社区等邻域，使其成为政府、百姓、商户的一站式服务平台。</p>
-</pre>
+</blockquote>
 
 
 
 <h3 id="技能">技能</h3>
 
-<pre>
+<blockquote>
   <ol>
   <li>熟练掌握 XCode + Elicpse + Android Studio 等开发工具。</li>
   <li>熟练掌握 C /C++、 Java、Objective-C、Python 等计算机语言。</li>
@@ -94,13 +91,13 @@ group: static
   <li>能独立完成项目框架及功能编写。</li>
   <li>熟悉 Android 应用开发框架，能独立开发高性能的Android应用；</li>
   </ol>
-</pre>
+</blockquote>
 
 
 
 <h3 id="我的">我的</h3>
 
-<pre>
+<blockquote>
   <h4 id="项目">项目</h4>
   
   <p>名称：SunDay（开源） <br>
@@ -126,13 +123,13 @@ group: static
   </ul>
   
   <h4 id="博客httpwwwimlime">博客：<a href="http://www.imli.me">http://www.imli.me</a></h4>
-</pre>
+</blockquote>
 
 
 
 <h3 id="求职意向">求职意向</h3>
 
-<pre>
+<blockquote>
   <p>职位：Android 开发工程师 <br>
   薪水：10-14k / m</p>
-</pre>
+</blockquote>
