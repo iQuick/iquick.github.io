@@ -12,7 +12,7 @@ group: static
 
 <h3 id="个人信息">个人信息</h3>
 
-<pre>
+<pre class="prettyprint">
   <p>姓名：       李赞 </p>
   <p>性别：       男 </p>
   <p>籍贯：       湖北 </p>
@@ -24,7 +24,7 @@ group: static
 
 <h3 id="工作经历">工作经历</h3>
 
-<pre>
+<pre class="prettyprint">
   <p>2013/3 - 今：武汉易趣科技有限公司 <br></p>
   <p>2015/7- 2015/8：在武大担任 Android 培训讲师</p>
 </pre>
@@ -33,7 +33,7 @@ group: static
 
 <h3 id="项目经历">项目经历</h3>
 
-<pre>
+<pre class="prettyprint">
   <h4 id="洪荒">洪荒</h4>
   
   <p>开发工具：XCode + ios sdk + Cocos2d </p>
@@ -81,7 +81,7 @@ group: static
 
 <h3 id="技能">技能</h3>
 
-<pre>
+<pre class="prettyprint">
   <ol>
   <li>熟练掌握 XCode + Elicpse + Android Studio 等开发工具。</li>
   <li>熟练掌握 C /C++、 Java、Objective-C、Python 等计算机语言。</li>
@@ -96,7 +96,7 @@ group: static
 
 <h3 id="我的">我的</h3>
 
-<pre>
+<pre class="prettyprint">
   <h4 id="项目">项目</h4>
   
   <p>名称：SunDay（开源） </p>
@@ -128,7 +128,7 @@ group: static
 
 <h3 id="求职意向">求职意向</h3>
 
-<pre>
+<pre class="prettyprint">
   <p>职位：Android 开发工程师 </p>
   <p>薪水：10-14k / m</p>
 </pre>
