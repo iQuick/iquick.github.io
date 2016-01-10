@@ -6,6 +6,9 @@ group: static
 ---
 {% include JB/setup %}
 
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
 <h1 id="简历">简历</h1>
 
 
