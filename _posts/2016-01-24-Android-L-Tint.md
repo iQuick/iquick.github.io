@@ -1,8 +1,8 @@
 ---
 layout:		post
-title:		Linux 光盘写入
-category:	[Linux]
-tags:		[Linux]
+title:		浅谈 Android L 的 Tint（着色）
+category:	[Android]
+tags:		[Android]
 published:	true
 ---
 # 浅谈 Android L 的 Tint（着色）
