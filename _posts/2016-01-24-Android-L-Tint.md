@@ -181,9 +181,9 @@ public class AppCompatView extends View implements TintableBackgroundView {
 ## 最后
 最后打个小广告，并附上 Github 及我的 Blog
 
-* 小白球[WhiteBall](http://www.wandoujia.com/apps/me.imli.whiteball)
+* 小白球:[http://www.wandoujia.com/apps/me.imli.whiteball](http://www.wandoujia.com/apps/me.imli.whiteball)
 
-[WhiteBall]({{ BASE_PATH }}/images/tint-3.png)
+![WhiteBall]({{ BASE_PATH }}/images/tint-3.png)
 
 * Github:[https://github.com/iQuick/AndroidTint](https://github.com/iQuick/AndroidTint)
 
