@@ -131,102 +131,49 @@ private static void setPorterDuffColorFilter(Drawable d, int color, PorterDuff.M
 
 ## 自定义控件的着色
 <pre class="prettyprint linenums">
-public class AppCompatFlowLayout extends FlowLayout implements TintableBackgroundView {
+public class AppCompatView extends View implements TintableBackgroundView {
 
-    private static final int[] TINT_ATTRS = {
-            android.R.attr.background
-    };
+    private TintInfo mTintInfo;
 
-    private TintInfo mInternalBackgroundTint;
-    private TintInfo mBackgroundTint;
-    private TintManager mTintManager;
-
-    public AppCompatFlowLayout(Context context) {
+    public AppCompatView(Context context) {
         this(context, null);
     }
 
-    public AppCompatFlowLayout(Context context, AttributeSet attributeSet) {
-        this(context, attributeSet, 0);
+    public AppCompatView(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public AppCompatFlowLayout(Context context, AttributeSet attributeSet, int defStyle) {
-        super(context, attributeSet, defStyle);
-
-        if (TintManager.SHOULD_BE_USED) {
-            TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attributeSet,
-                    TINT_ATTRS, defStyle, 0);
-            if (a.hasValue(0)) {
-                ColorStateList tint = a.getTintManager().getTintList(a.getResourceId(0, -1));
-                if (tint != null) {
-                    setInternalBackgroundTint(tint);
-                }
-            }
-            mTintManager = a.getTintManager();
-            a.recycle();
-        }
+    public AppCompatView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        EmBackgroundTintHelper.loadFromAttributes(this, attrs, defStyleAttr);
+        init();
     }
 
-    private void applySupportBackgroundTint() {
-        if (getBackground() != null) {
-            if (mBackgroundTint != null) {
-                TintManager.tintViewBackground(this, mBackgroundTint);
-            } else if (mInternalBackgroundTint != null) {
-                TintManager.tintViewBackground(this, mInternalBackgroundTint);
-            }
-        }
-    }
-
-    @Override
-    protected void drawableStateChanged() {
-        super.drawableStateChanged();
-        applySupportBackgroundTint();
-    }
-
-    private void setInternalBackgroundTint(ColorStateList tint) {
-        if (tint != null) {
-            if (mInternalBackgroundTint == null) {
-                mInternalBackgroundTint = new TintInfo();
-            }
-            mInternalBackgroundTint.mTintList = tint;
-            mInternalBackgroundTint.mHasTintList = true;
-        } else {
-            mInternalBackgroundTint = null;
-        }
-        applySupportBackgroundTint();
+    private void init() {
+        mTintInfo = new TintInfo();
+        mTintInfo.mHasTintList = true;
     }
 
     @Override
     public void setSupportBackgroundTintList(ColorStateList tint) {
-        if (mBackgroundTint == null) {
-            mBackgroundTint = new TintInfo();
-        }
-        mBackgroundTint.mTintList = tint;
-        mBackgroundTint.mHasTintList = true;
-
-        applySupportBackgroundTint();
+        EmBackgroundTintHelper.setSupportBackgroundTintList(this, mTintInfo,tint);
     }
 
     @Nullable
     @Override
     public ColorStateList getSupportBackgroundTintList() {
-        return mBackgroundTint != null ? mBackgroundTint.mTintList : null;
+        return EmBackgroundTintHelper.getSupportBackgroundTintList(mTintInfo);
     }
 
     @Override
-    public void setSupportBackgroundTintMode(PorterDuff.Mode tintMode) {
-        if (mBackgroundTint == null) {
-            mBackgroundTint = new TintInfo();
-        }
-        mBackgroundTint.mTintMode = tintMode;
-        mBackgroundTint.mHasTintMode = true;
-
-        applySupportBackgroundTint();
+    public void setSupportBackgroundTintMode(@Nullable PorterDuff.Mode tintMode) {
+        EmBackgroundTintHelper.setSupportBackgroundTintMode(this, mTintInfo, tintMode);
     }
 
     @Nullable
     @Override
     public PorterDuff.Mode getSupportBackgroundTintMode() {
-        return mBackgroundTint != null ? mBackgroundTint.mTintMode : null;
+        return EmBackgroundTintHelper.getSupportBackgroundTintMode(mTintInfo);
     }
 }
 </pre>
