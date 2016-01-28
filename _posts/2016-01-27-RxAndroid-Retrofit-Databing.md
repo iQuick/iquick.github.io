@@ -36,7 +36,7 @@ MVVM（Model-View-ViewModel），它采用双向绑定（data-binding）：View�
 ## RxAndroid + Retrofit + Databinding
 上面已经分别介绍了 RxAndroid、Retrofit、Databinding ，想必大家也有了个初步的认识，那我们就看看 RxAndroid + Retrofit + Databinding 产生的“化学反应”。
 
-<pre>
+<pre class="prettyprint linenums">
 private void initActionBar() {
     setSupportActionBar(getBinding().toolbar);
 
@@ -51,14 +51,14 @@ private void initActionBar() {
 
 代码中不再充斥着 findViewById 这样的代码了，将 etContentView() 换成下面的方法。
 
-<pre>
+<pre class="prettyprint linenums">
 this.mBinding = DataBindingUtil.setContentView(context, layout_id);
 </pre>
 
 系统会将我们的 layout 和 data 进行绑定并返回 bind 对象，bind.*** 或者 bind.set 方法来取得控件或修改值。当然还有其它的方法，但是你此时再使用 findViewById() 方法不再有效了。
 
 
-<pre>
+<pre class="prettyprint linenums">
 public interface NewsApi {
 
     /**
@@ -91,7 +91,7 @@ public interface NewsApi {
 }
 </pre>
 
-<pre>
+<pre class="prettyprint linenums">
 private void initObservables() {
     Observable.Transformer<List<News>, List<News>> networkingIndicator = RxNetworking.bindRefreshing(getBinding().refresher);
 
