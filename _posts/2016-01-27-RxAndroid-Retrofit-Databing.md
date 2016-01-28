@@ -36,6 +36,140 @@ MVVM（Model-View-ViewModel），它采用双向绑定（data-binding）：View�
 ## RxAndroid + Retrofit + Databinding
 上面已经分别介绍了 RxAndroid、Retrofit、Databinding ，想必大家也有了个初步的认识，那我们就看看 RxAndroid + Retrofit + Databinding 产生的“化学反应”。
 
+<pre>
+private void initActionBar() {
+    setSupportActionBar(getBinding().toolbar);
+
+    DrawerLayout drawer = getBinding().drawLayout;
+    ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, getBinding().toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+    drawer.setDrawerListener(toggle);
+    toggle.syncState();
+
+    getBinding().navigationView.setNavigationItemSelectedListener(this);
+}
+</pre>
+
+代码中不再充斥着 findViewById 这样的代码了，将 etContentView() 换成下面的方法。
+
+<pre>
+this.mBinding = DataBindingUtil.setContentView(context, layout_id);
+</pre>
+
+系统会将我们的 layout 和 data 进行绑定并返回 bind 对象，bind.*** 或者 bind.set 方法来取得控件或修改值。当然还有其它的方法，但是你此时再使用 findViewById() 方法不再有效了。
+
+
+<pre>
+public interface NewsApi {
+
+    /**
+     * 根据 ID 请求新闻列表
+     * @param id
+     * @return
+     */
+    @Headers("apikey: 2c61a1cd1f64216e92f7da1603697bf7")
+    @GET(ApiConst.NEWS)
+    Observable<News.NewsData> queryNewsByID(@Query("channelId") String id, @Query("page") int page);
+
+    /**
+     * 根据 ChannelName (标题)请求新闻列表
+     * @param title
+     * @return
+     */
+    @Headers("apikey: 2c61a1cd1f64216e92f7da1603697bf7")
+    @GET(ApiConst.NEWS)
+    Observable<News.NewsData> queryNewsByCName(@Query("channelName") String title, @Query("page") int page);
+
+    /**
+     * 根据 title (标题)请求新闻列表
+     * @param title
+     * @return
+     */
+    @Headers("apikey: 2c61a1cd1f64216e92f7da1603697bf7")
+    @GET(ApiConst.NEWS)
+    Observable<News.NewsData> queryNewsByTitle(@Query("title") String title, @Query("page") int page);
+
+}
+</pre>
+
+<pre>
+private void initObservables() {
+    Observable.Transformer<List<News>, List<News>> networkingIndicator = RxNetworking.bindRefreshing(getBinding().refresher);
+
+    observableRefresherNewsData = Observable.defer(() -> mNewApi.queryNewsByCName(getArguments().getString(BUNDLE_NAME), 1))
+            .doOnUnsubscribe(() -> this.unsubcribe("observableNewsData"))
+            .flatMap(data -> Observable.just(data.contentlist))
+            .flatMap(list -> getApp().getDB().putList(Const.DB_NEWS_NAME, list, News.class))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .compose(networkingIndicator);
+
+    observableLoadMoreNewsData = Observable.defer(() -> mNewApi.queryNewsByCName(getArguments().getString(BUNDLE_NAME), mCurrPage + 1))
+            .doOnUnsubscribe(() -> this.unsubcribe("observableNewsData"))
+            .map(data -> {
+                mCurrPage = data.currentPage;
+                return data.contentlist;
+            })
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .compose(networkingIndicator);
+
+    // 刷新/加载更多
+    RxSwipeRefreshLayout.refreshes(getBinding().refresher)
+            .doOnUnsubscribe(() -> this.unsubcribe("SwipeRefreshLayout"))
+            .flatMap(avoid -> observableRefresherNewsData)
+            .compose(bindToLifecycle())
+            .subscribe(RxList.prependTo(mNews, getBinding().content), this::showError);
+
+    RxEndlessRecyclerView.reachesEnd(getBinding().content)
+            .doOnUnsubscribe(() -> this.unsubcribe("Recycler"))
+            .flatMap(avoid -> observableLoadMoreNewsData)
+            .compose(bindToLifecycle())
+            .subscribe(RxList.appendTo(mNews), this::showError);
+
+    // 首次进入手动加载
+    observableRefresherNewsData
+            .map(list -> {
+                mNews.clear();
+                return list;
+            })
+            .compose(bindToLifecycle())
+            .subscribe(RxList.prependTo(mNews, getBinding().content), this::showError);
+
+}
+</pre>
+
+上面代码是使用 Retrofit 以 Get 形式从服务器中获取对应的新闻数据，大家可以看到代码的逻辑非常清晰，代码也很简洁（这里使用了 lambda 表达式，不使用的话，代码会长些，但是逻辑依然清晰），如果是按以前的写法的话，我们的代码会比这复杂的多，还涉及到复杂的线程之间的通信。而通过 RxJava ，我们只需要简单的使用 subscribeOn(Schedulers.io()) 和 observeOn(AndroidSchedulers.mainThread()) 就可以完成 IO 线程和 UI 线程的切换。
+
+帅的简直不敢相信，原来还可以这样玩。
+
+## 总结
+
+#### 优点：
+1. 代码逻辑更多加清晰。
+2. 线程之间的切换更加方便、自如。
+3. 代码可扩展性高，便于维护。
+4. 不再为 findViewById() 方法而烦，为 Activity 减负，整体结构更加清晰。
+
+#### 缺点：
+1. 代码出错时，由于 RxJava 的原因，将不太容易找到具体出错位置。
+2. 由于 RxJava 结构问题，部分需要捕捉的错误可能被 RxJava 消化掉。
+3. Databinding 在部分情况使用不太如意，如 include 进来的 layout 里对应的 id 不会被关联起来。
+4. 需要一定的学习成本（当然这不是问题）。
+
+
+## 广告
+这里打个小广告，介绍下我最近开发的几个小应用
+
+* 小白球：[http://www.wandoujia.com/apps/me.imli.whiteball](http://www.wandoujia.com/apps/me.imli.whiteball)
+![小白球](http://img.wdjimg.com/mms/screenshot/d/41/cc78a38a603fdce059b0799b0d50341d_320_570.jpeg)
+
+* 私人订制：[http://www.wandoujia.com/apps/me.imli.newme](http://www.wandoujia.com/apps/me.imli.newme)
+![私人订制](http://www.wandoujia.com/apps/me.imli.newme)
+
+* 轻截：[http://www.wandoujia.com/apps/me.imli.lightcrop](http://www.wandoujia.com/apps/me.imli.lightcrop)
+![轻截](http://img.wdjimg.com/mms/screenshot/3/52/d4dc8ec4ee96aeac453712650669a523_320_569.jpeg)
+
+大家多支持下，如果下载达到 1000 的话，我会将其中一两个项目开源出来的哦。
 
 
 ## 扩展阅读
@@ -49,5 +183,6 @@ MVVM（Model-View-ViewModel），它采用双向绑定（data-binding）：View�
 > * Retrofit 离线缓存策略：[http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0115/3873.html](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0115/3873.html)
 
 3. Databinding 
+> * MVC，MVP 和 MVVM 的图示：[http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html](http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html)
 > * DataBinding 用户指南：[http://segmentfault.com/a/1190000002876984](http://segmentfault.com/a/1190000002876984)
-> * Github 上比较全面的：[]()
+> * Github 上比较全面的：[https://github.com/LyndonChin/MasteringAndroidDataBinding](https://github.com/LyndonChin/MasteringAndroidDataBinding)
