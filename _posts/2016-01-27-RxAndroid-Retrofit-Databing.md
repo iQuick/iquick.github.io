@@ -161,12 +161,15 @@ private void initObservables() {
 这里打个小广告，介绍下我最近开发的几个小应用
 
 * 小白球：[http://www.wandoujia.com/apps/me.imli.whiteball](http://www.wandoujia.com/apps/me.imli.whiteball)
+
 ![小白球](http://img.wdjimg.com/mms/screenshot/d/41/cc78a38a603fdce059b0799b0d50341d_320_570.jpeg)
 
 * 私人订制：[http://www.wandoujia.com/apps/me.imli.newme](http://www.wandoujia.com/apps/me.imli.newme)
-![私人订制](http://www.wandoujia.com/apps/me.imli.newme)
+
+![私人订制](http://img.wdjimg.com/mms/screenshot/e/aa/ac18152bdb7721defd7b830d2bc45aae_320_569.jpeg)
 
 * 轻截：[http://www.wandoujia.com/apps/me.imli.lightcrop](http://www.wandoujia.com/apps/me.imli.lightcrop)
+
 ![轻截](http://img.wdjimg.com/mms/screenshot/3/52/d4dc8ec4ee96aeac453712650669a523_320_569.jpeg)
 
 大家多支持下，如果下载达到 1000 的话，我会将其中一两个项目开源出来的哦。
