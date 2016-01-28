@@ -124,6 +124,17 @@ private static void setPorterDuffColorFilter(Drawable d, int color, PorterDuff.M
 
     // 最最重要，原来是对background drawable设置了colorFilter 完成了我们要的功能。
     d.setColorFilter(filter);
+}
+
+private void applySupportBackgroundTint() {
+    if (getBackground() != null) {
+        if (mBackgroundTint != null) {
+            TintManager.tintViewBackground(this, mBackgroundTint);
+        } else if (mInternalBackgroundTint != null) {
+            TintManager.tintViewBackground(this, mInternalBackgroundTint); //最重要的，对tint进行应用
+        }
+    }
+}
 </pre>
 
 以上是对API21以下的兼容。
