@@ -11,6 +11,7 @@ published:	true
 看到现在市面很多应用都有打开应用商店评分的功能。
 
 既然我们的打开手机上的已经应用商店，就必须有各大应用商店的包名，以下是现在几个主流的应用
+
 ```
 static {
     MarketPackages.add("com.lenovo.leos.appstore");
@@ -21,9 +22,11 @@ static {
     MarketPackages.add("com.baidu.appsearch");
     MarketPackages.add("com.tencent.android.qqdownloader");
 }
+
 ```
 
 然后就是过滤掉手机上没有安装的应用商店
+
 ```
 public static List<ApplicationInfo> filterInstalledPkgs(Context context) {
     List<ApplicationInfo> infos = new ArrayList<>();
@@ -53,9 +56,11 @@ public static List<ApplicationInfo> filterInstalledPkgs(Context context) {
     }
     return infos;
 }
+
 ```
 
 接着就的打开的我们的应用商店来进行评价了
+
 ```
 /**
  * 启动到app详情界面
