@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 风一样的男人
+title: page.title
 tagline: 这风中世界
 ---
 {% include JB/setup %}
