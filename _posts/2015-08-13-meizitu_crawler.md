@@ -12,7 +12,9 @@ published:	true
 
 <!--break-->
 
-<pre class="prettyprint linenums">
+最近在学习 python ，闲的无事，于是自己写的了个妹子下载神器，妹子图地址：http://sexy.faceks.com 利用正则找出妹子图的链接，然后将图片分类下载到本地文件夹
+
+```
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
@@ -48,17 +50,17 @@ def getImageData(url):
 
 # 抓取妹子图片 Url
 def findMeizituUrl(data):
-	re_value = '&lt;img src="(.*?)".*?/>'
+	re_value = '<img src="(.*?)".*?/>'
 	return findallData(re_value, data)
 
 # 抓取妹子图片标题
 def findMeizituTitle(data):
-	re_value = '&lt;div class="text">&lt;p>(.*?)&lt;/p>&lt;/div>'
+	re_value = '<div class="text"><p>(.*?)</p></div>'
 	return findallData(re_value, data)
 
 # 查找对应妹子图的子分类 url
 def findMeizituChildUrl(data):
-	re_value = r'&lt;a class="img" href="(.*?)">'
+	re_value = r'<a class="img" href="(.*?)">'
 	return findallData(re_value, data)
 
 # 根据 re_value 查找
@@ -73,7 +75,7 @@ def findMeizituFeng(data):
 	meizi_child_list = findMeizituChildUrl(data)
 
 	for i in range(0, len(meizi_title_list)):
-		title = re.sub('&lt;br />|&nbsp|;| ', '', meizi_title_list[i])
+		title = re.sub('<br />|&nbsp|;| ', '', meizi_title_list[i])
 		url = meizi_url_list[i]
 		child = meizi_child_list[i]
 
@@ -95,6 +97,7 @@ def findMeizituChild(data):
 def downloadMeizitu(meizis):
 	for meizi in meizis:
 		# 保存封面图片
+		# print(meizi.url)
 		downloadImage(meizi.url, meizi.title, MEIZI_PATH + MEIZI_DIR)
 		# 保存子分类图片
 		if MEIZI_IS_GET_CHILD:
@@ -149,4 +152,4 @@ dirIsCreate(MEIZI_DIR, MEIZI_PATH)
 downloadMeizitu(totalMeizi)
 
 print('Download complete the meizitu! Thank you for your use.')
-</pre>
+```
