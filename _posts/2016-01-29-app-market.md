@@ -8,6 +8,83 @@ published:	true
 # 打开应用商店对应用进行评价
 ---
 
+看到现在市面很多应用都有打开应用商店评分的功能。
+
+既然我们的打开手机上的已经应用商店，就必须有各大应用商店的包名，以下是现在几个主流的应用
+```
+static {
+    MarketPackages.add("com.lenovo.leos.appstore");
+    MarketPackages.add("com.android.vending");
+    MarketPackages.add("com.xiaomi.market");
+    MarketPackages.add("com.qihoo.appstore");
+    MarketPackages.add("com.wandoujia.phoenix2");
+    MarketPackages.add("com.baidu.appsearch");
+    MarketPackages.add("com.tencent.android.qqdownloader");
+}
+```
+
+然后就是过滤掉手机上没有安装的应用商店
+```
+public static List<ApplicationInfo> filterInstalledPkgs(Context context) {
+    List<ApplicationInfo> infos = new ArrayList<>();
+    if (context == null || MarketPackages == null || MarketPackages.size() == 0)
+        return infos;
+    PackageManager pm = context.getPackageManager();
+    List<PackageInfo> installedPkgs = pm.getInstalledPackages(0);
+    int li = installedPkgs.size();
+    int lj = MarketPackages.size();
+    for (int j = 0; j < lj; j++) {
+        for (int i = 0; i < li; i++) {
+            String installPkg = "";
+            String checkPkg = MarketPackages.get(j);
+            try {
+                installPkg = installedPkgs.get(i).applicationInfo.packageName;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (TextUtils.isEmpty(installPkg))
+                continue;
+            if (installPkg.equals(checkPkg)) {
+                infos.add(installedPkgs.get(i).applicationInfo);
+                break;
+            }
+
+        }
+    }
+    return infos;
+}
+```
+
+接着就的打开的我们的应用商店来进行评价了
+```
+/**
+ * 启动到app详情界面
+ *
+ * @param appPkg
+ *            App的包名
+ * @param marketPkg
+ *            应用商店包名 ,如果为""则由系统弹出应用商店列表供用户选择,否则调转到目标市场的应用详情界面，某些应用商店可能会失败
+ */
+public static void launchAppDetail(Context context, String appPkg, String marketPkg) {
+    try {
+        if (TextUtils.isEmpty(appPkg))
+            return;
+        Uri uri = Uri.parse("market://details?id=" + appPkg);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        if (!TextUtils.isEmpty(marketPkg))
+            intent.setPackage(marketPkg);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+```
+
+
+
+<!--break-->
+
 ```
 /**
  * 2015-11-1
