@@ -25,6 +25,9 @@ static {
 
 ```
 
+
+<!--break-->
+
 然后就是过滤掉手机上没有安装的应用商店
 
 ```
@@ -86,9 +89,6 @@ public static void launchAppDetail(Context context, String appPkg, String market
 }
 ```
 
-
-
-<!--break-->
 
 ```
 /**
