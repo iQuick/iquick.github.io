@@ -8,7 +8,7 @@ published:	true
 # 打开应用商店对应用进行评价
 ---
 
-<pre>
+```
 /**
  * 2015-11-1
  * 应用商店评分工具类
@@ -173,4 +173,4 @@ public class MarketUtils {
 
 }
 
-</pre>
+```
