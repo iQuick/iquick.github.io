@@ -1,6 +1,6 @@
 ---
 layout: page
-title: page.title
+title: {{ page.title }}
 tagline: 这风中世界
 ---
 {% include JB/setup %}
