@@ -1,6 +1,6 @@
 ---
 layout: page
-title: {{ title }}
+title: 纸飞机
 tagline: 这风中世界
 ---
 {% include JB/setup %}
