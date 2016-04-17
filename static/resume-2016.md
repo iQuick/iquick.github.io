@@ -110,6 +110,7 @@ group: static
   简介：一款符合 Android 设计的天气软件 <br>
   开发工具：Android Studio + Android SDK <br>
   Github：<a href="https://github.com/iQuick/SunDay">https://github.com/iQuick/SunDay</a></p>
+  <br/>
   
   <p>名称：私人定制 <br>
   简介：一款符合 Android Design 设计规范的新闻软件 <br>
@@ -118,6 +119,7 @@ group: static
   使用技术：RxJava + Retrofit + DataBinding <br>
   Github：<a href="https://github.com/iQuick/NewsMe">https://github.com/iQuick/NewsMe</a> <br>
   App：<a href="http://fir.im/newsme">http://fir.im/newsme</a></p>
+  <br/>
   
   <p>名称：小白球 <br>
   简介：一款符合 Android Design 设计规范的虚拟按键 <br>
