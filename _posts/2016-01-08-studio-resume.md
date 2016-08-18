@@ -19,7 +19,7 @@ Android Studio 上对 apk 进行签名方法无外乎两种
 ## 第二种
 在 build.gradle 添加 task 
 
-<pre class="prettyprint linenums">
+```gralde
 signingConfigs {
     release {
         storeFile file("Android")
@@ -34,7 +34,7 @@ signingConfigs {
         keyPassword "Android"
     }
 }
-</pre>
+```
 此方法简单，也可以适用于批量打包签名，只是在上传到的我 git 仓库的时候遇到了问题
 
 我不想将我的签名信息也上传到仓库中，这时上传到 git 仓库时就需要修改我的 build.gradle 文件，这无疑又变的麻烦了
@@ -46,18 +46,20 @@ signingConfigs {
 在新方法中，我将签名文件独立成了一个新的文件 sign.config ，然后在 .gitignore 中将其过滤掉
 
 **sign.config**
-<pre class="prettyprint linenums">
+
+```json
 {
     "storeFile": "C:/Users/Em/Desktop/Newsme/key.jks",
     "storePassword": "android",
     "keyAlias": "android",
     "keyPassword": "android"
 }
-</pre>
+```
 
 **build.gralde**
-<pre class="prettyprint linenums">
-...
+
+```gralde
+~~
 
 class SignInfo {
     public String storeFile;
@@ -94,7 +96,7 @@ def getMyKeyPassword() {
 
 
 android {
-	...
+	~~
 
     signingConfigs {
         release {
@@ -125,11 +127,11 @@ android {
 
         }
     }
-    ...
+    ~~
 }
 
-...
+~~
 
-</pre>
+```
 
 至此，大功告成

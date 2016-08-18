@@ -13,13 +13,13 @@ published:	true
 <!--break-->
 
 ### 新样式
-![新的]({{ BASE_PATH }}/images/swiperefreshlayout-1.gif)
+![新的]({{ BASE_PATH }}/img/post/swiperefreshlayout/swiperefreshlayout-1.gif)
 
 ### 旧样式
-![旧的]({{ BASE_PATH }}/images/swiperefreshlayout-2.gif)
+![旧的]({{ BASE_PATH }}/img/post/swiperefreshlayout/swiperefreshlayout-2.gif)
 
 ## 使用
-<pre class="prettyprint linenums">
+```java
 mHandler = new Handler();
 
 mListView = (ListView) findViewById(R.id.list);
@@ -53,7 +53,7 @@ mSwipeRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 		}, 2000);
 	}
 });
-</pre>
+```
 
 ## Github:
 [https://github.com/iQuick/SwipeRefreshLayout](https://github.com/iQuick/SwipeRefreshLayout)

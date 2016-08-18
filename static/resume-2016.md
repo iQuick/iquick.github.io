@@ -1,10 +1,9 @@
 ---
 layout: page
-title : 文章
+title : Resume
 header : 所有文章
 group: static
 ---
-{% include JB/setup %}
 
 <h1 id="简历">简历</h1>
 

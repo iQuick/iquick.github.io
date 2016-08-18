@@ -3,6 +3,7 @@ layout:		post
 title:		浅谈 RxAndroid + Retrofit + Databing
 category:	[Android]
 tags:		[Android]
+catalog:    true
 published:	true
 ---
 # 浅谈 RxAndroid + Retrofit + Databinding
@@ -36,7 +37,7 @@ MVVM（Model-View-ViewModel），它采用双向绑定（data-binding）：View�
 ## RxAndroid + Retrofit + Databinding
 上面已经分别介绍了 RxAndroid、Retrofit、Databinding ，想必大家也有了个初步的认识，那我们就看看 RxAndroid + Retrofit + Databinding 产生的“化学反应”。
 
-<pre class="prettyprint linenums">
+```java
 private void initActionBar() {
     setSupportActionBar(getBinding().toolbar);
 
@@ -47,18 +48,18 @@ private void initActionBar() {
 
     getBinding().navigationView.setNavigationItemSelectedListener(this);
 }
-</pre>
+```
 
 代码中不再充斥着 findViewById 这样的代码了，将 etContentView() 换成下面的方法。
 
-<pre class="prettyprint linenums">
+```java
 this.mBinding = DataBindingUtil.setContentView(context, layout_id);
-</pre>
+```
 
 系统会将我们的 layout 和 data 进行绑定并返回 bind 对象，bind.*** 或者 bind.set 方法来取得控件或修改值。当然还有其它的方法，但是你此时再使用 findViewById() 方法不再有效了。
 
 
-<pre class="prettyprint linenums">
+```java
 public interface NewsApi {
 
     /**
@@ -89,9 +90,9 @@ public interface NewsApi {
     Observable<News.NewsData> queryNewsByTitle(@Query("title") String title, @Query("page") int page);
 
 }
-</pre>
+```
 
-<pre class="prettyprint linenums">
+```java
 private void initObservables() {
     Observable.Transformer<List<News>, List<News>> networkingIndicator = RxNetworking.bindRefreshing(getBinding().refresher);
 
@@ -136,7 +137,7 @@ private void initObservables() {
             .subscribe(RxList.prependTo(mNews, getBinding().content), this::showError);
 
 }
-</pre>
+```
 
 上面代码是使用 Retrofit 以 Get 形式从服务器中获取对应的新闻数据，大家可以看到代码的逻辑非常清晰，代码也很简洁（这里使用了 lambda 表达式，不使用的话，代码会长些，但是逻辑依然清晰），如果是按以前的写法的话，我们的代码会比这复杂的多，还涉及到复杂的线程之间的通信。而通过 RxJava ，我们只需要简单的使用 subscribeOn(Schedulers.io()) 和 observeOn(AndroidSchedulers.mainThread()) 就可以完成 IO 线程和 UI 线程的切换。
 

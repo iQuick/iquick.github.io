@@ -14,7 +14,7 @@ Android 显示长图
 
 以下是源码
 
-<pre class="prettyprint linenums">
+```java
 package cn.uue.yixiaoba.widget;
 
 import java.io.ByteArrayInputStream;
@@ -207,8 +207,6 @@ public class LargeImageView extends ImageView {
         return bitmap;
 	}
 }
-
-
-</pre>
+```
 
 由于对源码不是很熟悉，所以还是有些 BUG 的，但是显示个长图片还是没有什么问题的。

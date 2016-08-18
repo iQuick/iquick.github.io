@@ -20,7 +20,7 @@ published:	true
 
 ## 系统常见的压缩命令
 
-<pre class="prettyprint">
+<pre>
 选项与参数：
 *.Z         compress 程序压缩的文件；
 *.gz        gzip 程序压缩的文件；
@@ -35,7 +35,7 @@ published:	true
 compress这个压缩命令是非常老旧的一款，大概只有在非常旧的 Unix 机器上面还会找到这个软件。
 不过，由於 gzip 已经可以解开使用 compress 压缩的文件，因此， compress 可以不用学习啦！ 但是，如果你所在的环境还是有老旧的系统，那么还是得要学一学就是了。好了， 如果你有网络的话，那么安装其实很简单喔！
 
-<pre class="prettyprint">
+<pre>
 yum install ncompress			&lt;== 这里是安装
 
 compress [-rcv] 文件或目录  	&lt;== 这里是压缩
@@ -45,7 +45,7 @@ uncompress 文件.Z           	&lt;== 这里是解压缩
 ## gzip, zcat
 gzip 可以说是应用度最广的压缩命令了！目前 gzip 可以解开 compress, zip 与 gzip 等软件所压缩的文件。
 
-<pre class="prettyprint">
+<pre>
 选项与参数：
 -c  ：将压缩的数据输出到萤幕上，可透过数据流重导向来处理；
 -d  ：解压缩的参数；
@@ -60,7 +60,7 @@ zcat 档名.gz   		&lt;== 查看
 
 gzip 的压缩已经最佳化过了，所以虽然 gzip 提供 1~9 的压缩等级，不过使用默认的 6 就非常好用了！
 
-<pre class="prettyprint">
+<pre>
 gzip -9 -c man.config > man.config.gz  &lt;== 用最佳的压缩比压缩，并保留原本的文件
 </pre>
 
@@ -68,7 +68,7 @@ gzip -9 -c man.config > man.config.gz  &lt;== 用最佳的压缩比压缩，并�
 
 若说 gzip 是为了取代 compress 并提供更好的压缩比而成立的，那么 bzip2 则是为了取代 gzip 并提供更佳的压缩比而来的。
 
-<pre class="prettyprint">
+<pre>
 选项与参数：
 -c  ：将压缩的过程产生的数据输出到萤幕上！
 -d  ：解压缩的参数
@@ -86,7 +86,7 @@ bzip2 -9 -c 档名 > 档名.bz2 	&lt;== 用最佳的压缩比压缩，并保留�
 ## 打包命令： tar
 虽然 gzip 与 bzip2 也能够针对目录来进行压缩， 不过，这两个命令对目录的压缩指的是『将目录内的所有文件 "分别" 进行压缩』的动作！ 而不像在 Windows 的系统，可以使用类似 WinRAR 这一类的压缩软件来将好多数据『包成一个文件』的样式。
 
-<pre class="prettyprint">
+<pre>
 选项与参数：
 -c  ：创建打包文件，可搭配 -v 来察看过程中被打包的档名(filename)
 -t  ：察看打包文件的内容含有哪些档名，重点在察看『档名』就是了；
@@ -110,7 +110,7 @@ tar [-j|-z] [xv] [-f 创建的档名] [-C 目录]   &lt;==解压缩
 
 使用 tar 加入 -j 或 -z 的参数备份 /etc/ 目录
 
-<pre class="prettyprint">
+<pre>
 tar -zpcv -f /root/etc.tar.gz /etc
 
 # 由於加上 -v 这个选项，因此正在作用中的档名就会显示在萤幕上。
@@ -124,7 +124,7 @@ tar -jpcv -f /root/etc.tar.bz2 /etc
 
 查阅 tar 文件的数据内容(可察看档名)，与备份档名有否根目录的意义
 
-<pre class="prettyprint">
+<pre>
 tar -jtv -f /root/etc.tar.bz2
 
 # 如果加上 -v 这个选项时，详细的文件权限/属性都会被列出来！如果只是想要知道档名而已， 那么就将 -v 拿掉即可。
@@ -132,7 +132,7 @@ tar -jtv -f /root/etc.tar.bz2
 
 备份的数据解压缩，并考虑特定目录的解压缩动作 (-C 选项的应用)
 
-<pre class="prettyprint">
+<pre>
 tar -jxv -f /root/etc.tar.bz2
 
 # 在 tmp 目录下解压
@@ -141,7 +141,7 @@ tar -jxv -f /root/etc.tar.bz2 -C /tmp
 
 仅解开单一文件的方法
 
-<pre class="prettyprint">
+<pre>
 # 1. 先找到我们要的档名，假设解开 shadow 文件好了：
 tar -jtv -f /root/etc.tar.bz2 | grep 'shadow'
 
@@ -152,13 +152,13 @@ tar -jxv -f /root/etc.tar.bz2 etc/shadow
 
 打包某目录，但不含该目录下的某些文件之作法
 
-<pre class="prettyprint">
+<pre>
 ar -jcv  -f /root/system.tar.bz2 --exclude=/root/etc* --exclude=/root/system.tar.bz2  /etc /root
 </pre>
 
 仅备份比某个时刻还要新的文件
 
-<pre class="prettyprint">
+<pre>
 # 1. 先由 find 找出比 /etc/passwd 还要新的文件
 find /etc -newer /etc/passwd
 

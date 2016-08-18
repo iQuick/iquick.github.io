@@ -48,7 +48,7 @@ Android有另外一种内存区域，叫做Ashmem。它操作起来更像Native�
 
 ## 不仅仅是加载程序，它是一个管道
 
-![Fresco]({{ BASE_PATH }}/images/fresco-1.png)
+![Fresco]({{ BASE_PATH }}/img/post/image-loading-fresco/fresco-1.png)
 
 几个优秀的开源库都是按照这个顺序执行的，比如 Picasso,Universal Image Loader,Glide和 Volley等等。上面这些开源库为Android的发展做出了非常重要的贡献。我们相信Fresco在几个重要方面会表现的更好。
 
@@ -62,24 +62,24 @@ Android有另外一种内存区域，叫做Ashmem。它操作起来更像Native�
 
 我们使用像这样的系统把Producer联系起来。假设我们有一个producer的工作是把类型I转化为类型O，那么它看起来应该是这个样子：
 
-<pre class="prettyprint linenums">
-public class OutputProducer&lt;I, O> implements Producer&lt;O> {
+```java
+public class OutputProducer<I, O> implements Producer<O> {
  
-  private final Producer&lt;I> mInputProducer;
+  private final Producer<I> mInputProducer;
  
-  public OutputProducer(Producer&lt;I> inputProducer) {
+  public OutputProducer(Producer<I> inputProducer) {
     this.mInputProducer = inputProducer;
   }
  
-  public void produceResults(Consumer&lt;O> outputConsumer, ProducerContext context) {
-    Consumer&lt;I> inputConsumer = new InputConsumer(outputConsumer);
+  public void produceResults(Consumer<O> outputConsumer, ProducerContext context) {
+    Consumer<I> inputConsumer = new InputConsumer(outputConsumer);
     mInputProducer.produceResults(inputConsumer, context);
   }
  
-  private static class InputConsumer implements Consumer&lt;I> {
-    private final Consumer&lt;O> mOutputConsumer;
+  private static class InputConsumer implements Consumer<I> {
+    private final Consumer<O> mOutputConsumer;
  
-    public InputConsumer(Consumer&lt;O> outputConsumer) {
+    public InputConsumer(Consumer<O> outputConsumer) {
       mOutputConsumer = outputConsumer;
     }
  
@@ -89,7 +89,7 @@ public class OutputProducer&lt;I, O> implements Producer&lt;O> {
     }
   }
 }
-</pre>
+```
 
 这可以使我们把非常复杂的步骤串起来，同时也可以保持他们逻辑的独立性。
 

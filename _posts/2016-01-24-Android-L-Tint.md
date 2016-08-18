@@ -21,7 +21,7 @@ Tint 翻译为着色。
 <!--break-->
 
 ## 例子：
-![WhiteBall-2]({{ BASE_PATH }}/images/tint-2.png)![WhiteBall-1]({{ BASE_PATH }}/images/tint-1.png)
+![WhiteBall-2]({{ BASE_PATH }}/img/post/Android-L-Tint/tint-2.png)![WhiteBall-1]({{ BASE_PATH }}/img/post/Android-L-Tint/tint-1.png)
 
 大家可以看上面再张图，这个是做的一个应用“小白球”，如图 1 的小图片本来都是白色的（圆背景的单独设的），但是经过 Tint 着色后就变成了图 2 中的浅蓝色了。
 
@@ -31,12 +31,14 @@ Tint 翻译为着色。
 
 看下最核心的代码就这么几行
 
+```java
 if (filter == null) {
     // Cache miss, so create a color filter and add it to the cache
     filter = new PorterDuffColorFilter(color, mode);
 }
 
 d.setColorFilter(filter);
+```
 通常情况下，我们的mode一般都是SRC_IN，如果想了解这个属性相关的资料，这里是传送门： http://blog.csdn.net/t12x3456/article/details/10432935 （中文）
 
 由于API Level 21以前不支持background tint在xml中设置，于是提供了ViewCompat.setBackgroundTintList方法和ViewCompat.setBackgroundTintMode用来手动更改需要着色的颜色，但要求相关的View继承TintableBackgroundView接
@@ -44,18 +46,19 @@ d.setColorFilter(filter);
 ## 源码解析
 
 以 EditText 为例，其它的基本一致
-<pre class="prettyprint linenums">
+
+```java
 public AppCompatEditText(Context context, AttributeSet attrs, int defStyleAttr) {
     super(TintContextWrapper.wrap(context), attrs, defStyleAttr);
 
-    ...
+    ~~
 
     ColorStateList tint = a.getTintManager().getTintList(a.getResourceId(0, -1)); //根据背景的resource id获取内置的着色颜色。
     if (tint != null) {
         setInternalBackgroundTint(tint); //设置着色
     }
 
-    ...
+    ~~
 }
 
 private void setInternalBackgroundTint(ColorStateList tint) {
@@ -73,7 +76,7 @@ private void setInternalBackgroundTint(ColorStateList tint) {
 }
 
 
- private void applySupportBackgroundTint() {
+private void applySupportBackgroundTint() {
     if (getBackground() != null) {
         if (mBackgroundTint != null) {
             TintManager.tintViewBackground(this, mBackgroundTint);
@@ -82,11 +85,12 @@ private void setInternalBackgroundTint(ColorStateList tint) {
         }
     }
 }
-</pre>
+```
 
 然后我们进入tintViewBackground看下TintManager里面的源码
-<pre class="prettyprint linenums">
- public static void tintViewBackground(View view, TintInfo tint) {
+
+```java
+public static void tintViewBackground(View view, TintInfo tint) {
     final Drawable background = view.getBackground();
     if (tint.mHasTintList) {
         //如果设置了tint的话，对背景设置PorterDuffColorFilter
@@ -135,13 +139,14 @@ private void applySupportBackgroundTint() {
         }
     }
 }
-</pre>
+```
 
 以上是对API21以下的兼容。
 如果我们要实现自己的AppCompat组件实现tint的一些特性的话，我们就可以指定好ColorStateList，利用TintManager对自己的背景进行着色，当然需要对外开放设置的接口的话，我们还要实现TintableBackgroundView接口，然后用ViewCompat.setBackgroundTintList进行设置，这样能完成对v7以上所有版本的兼容。
 
 ## 自定义控件的着色
-<pre class="prettyprint linenums">
+
+```java
 public class AppCompatView extends View implements TintableBackgroundView {
 
     private TintInfo mTintInfo;
@@ -187,14 +192,14 @@ public class AppCompatView extends View implements TintableBackgroundView {
         return EmBackgroundTintHelper.getSupportBackgroundTintMode(mTintInfo);
     }
 }
-</pre>
+```
 
 ## 最后
 最后打个小广告，并附上 Github 及我的 Blog
 
 * 小白球:[http://www.wandoujia.com/apps/me.imli.whiteball](http://www.wandoujia.com/apps/me.imli.whiteball)
 
-![WhiteBall]({{ BASE_PATH }}/images/tint-3.png)
+![WhiteBall]({{ BASE_PATH }}/img/post/Android-L-Tint/tint-3.png)
 
 * Github:[https://github.com/iQuick/AndroidTint](https://github.com/iQuick/AndroidTint)
 

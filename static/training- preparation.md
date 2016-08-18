@@ -1,10 +1,9 @@
 ---
 layout: page
-title : 文章
+title : T-Preparation
 header : 所有文章
 group: static
 ---
-{% include JB/setup %}
 
 # Android 培训
 ---

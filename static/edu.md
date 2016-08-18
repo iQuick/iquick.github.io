@@ -1,10 +1,9 @@
 ---
 layout: page
-title : 文章
+title : Edu
 header : 所有文章
 group: static
 ---
-{% include JB/setup %}
 
 * RecyclerView
 * CardView 

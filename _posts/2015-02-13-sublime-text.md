@@ -21,7 +21,7 @@ Sublime Text是可以无限试用的，所以不用担心没有注册不能用�
 
 如果你觉得这样很烦，你也可以使用下面任意一个正的注册码，Sublime Text Build 3065 License key
 
-<pre class="prettyprint linenums">
+```
 ----- BEGIN LICENSE -----
 K-20
 Single User License
@@ -48,43 +48,44 @@ CFDA1551 51B05B5D 2D3C8CFE FA8B4285
 346372DA 37AA8ABA 6EB30E41 781BC81F
 B5CA66E3 A09DBD3A 3FE85BBD 69893DBD
 ------ END LICENSE ------
-</pre>
+```
 
 ## 主题
 Sublime Text 的主题安装也很简单，只需要将下载的主题解压到packages路径下（也可以在Preferences -> Browes Packages直接打开目录）,并以"Theme - ***"形式命名，最后在Preferences -> Setting-User打开设置在里面添加你的主题，重启Sublime Text即可。
 
-###下面推荐几款主题：
-<pre class="prettyprint linenums">
+### 下面推荐几款主题：
+```html
 http://www.topthink.com/topic/4407.html
 https://github.com/buymeasoda/soda-theme
-</pre>
+```
 
 ## 插件
-###安装包控制（Package Control）
+
+### 安装包控制（Package Control）
 打开Sublime Text，Ctrl + ` 调出控制台Console；
 
 将以下代码粘贴进命令行中并回车：
 
-<pre class="prettyprint linenums">
+```python
 import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
-</pre>
+```
 
 重启 Sublime Text，如果在 Preferences -> Package Settings中见到Package Control这一项，就说明安装成功了。
 
-###安装Alignment插件
+### 安装Alignment插件
 对于某些喜欢整齐的程序员来说，看到下面这种情况可能是让其无法忍受的：
-<pre class="prettyprint linenums">
+```
 var joe = 'joe';
 var johnny = 'johnny';
 var quaid = 'quaid';
-</pre>
+```
 
 一定要改成这样才会安心：
-<pre class="prettyprint linenums">
+```
 var joe    = 'joe';
 var johnny = 'johnny';
 var quaid  = 'quaid';
-</pre>
+```
 Sublime Text 之中，一个 Sublime Alignment 插件也可以轻松实现，传说最新版Sublime 已经集成。
 
 1.按下 Ctrl + Shift + P 调出命令面板。
@@ -95,9 +96,9 @@ Sublime Text 之中，一个 Sublime Alignment 插件也可以轻松实现，传
 
 4.重启 Sublime Text 使之生效。现在通过选中文本并按 Ctrl + Shift + A 就可以进行对齐操作了。
 
-###Sublime CodeIntel
+### Sublime CodeIntel
 
 代码自动提示
 
-###Git
+### Git
 基本实现了Git的所有功能

@@ -10,7 +10,7 @@ published:	true
 
 前段时间仿QQ写的截取头像的自定View，仿QQ头像截取 CutAvatarView 继承至 ImageView 
 
-![CutAvatarView]({{BASE_PATH}}/images/cut-avatar.jpg)
+![CutAvatarView]({{BASE_PATH}}/img/post/cutavatarview/cut-avatar.jpg)
 
 <!--break-->
 
@@ -18,18 +18,18 @@ published:	true
 
 xml 布局文件
 
-<pre class="prettyprint linenums">
-&lt;?xml version="1.0" encoding="utf-8"?>
-&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    &lt;me.imli.qqcutavatar.view.CutAvatarView
+    <me.imli.qqcutavatar.view.CutAvatarView
         android:id="@+id/cut_avatar_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    &lt;Button
+    <Button
         android:id="@+id/btn_cut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,12 +37,12 @@ xml 布局文件
         android:layout_alignParentRight="true"
         android:text="截取" />
 
-&lt;/RelativeLayout>
-</pre>
+</RelativeLayout>
+```
 
 CutAvatarActivity 代码
 
-<pre class="prettyprint linenums">
+```java
 public class CutAvatarActivity extends Activity {
 	
 	public static Bitmap bitmap;
@@ -77,11 +77,10 @@ public class CutAvatarActivity extends Activity {
 	}
 	
 }
-</pre>
+```
 
 ## 核心代码
-<pre class="prettyprint linenums">
-
+```java
 @Override
 protected void onDraw(Canvas canvas) {
 	super.onDraw(canvas);
@@ -180,10 +179,10 @@ protected void checkBoundary(Matrix matrix) {
     }
     matrix.setValues(mMXValues);
 }
-</pre>
+```
 
 ## 截取头像部分代码
-<pre class="prettyprint linenums">
+```
 	
 /**
  * 截取头像
@@ -220,7 +219,7 @@ public Bitmap clip(boolean isCircle) {
 	isTouCutBitmap = false;
 	return head;
 }
-</pre>
+```
 
 ## Github
 [https://github.com/iQuick/QQCutAvatar](https://github.com/iQuick/QQCutAvatar)

@@ -4,7 +4,6 @@ title : 我兄弟
 header : 所有文章
 group: static
 ---
-{% include JB/setup %}
 
 昨天和我一许久未见的老哥们在光谷见了个面，感觉人有点不
 

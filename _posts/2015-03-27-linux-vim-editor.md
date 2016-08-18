@@ -39,7 +39,7 @@ published:	true
 
 在一般模式当中，输入『 : / ? 』三个中的任何一个按钮，就可以将光标移动到最底下那一行。在这个模式当中，可以提供你『搜寻资料』的动作，而读取、存盘、大量取代字符、离开 vi 、显示行号等等的动作则是在此模式中达成的！
 
-![vi]({{ BASE_PATH }}/images/vi-mode.gif)
+![vi]({{ BASE_PATH }}/img/post/linux-vim-editor/vi-mode.gif)
 
 ### 简易执行范例
 
@@ -51,17 +51,17 @@ published:	true
 vi test.txt
 </pre>
 
-![vi-command]({{ BASE_PATH }}/images/vi-command.jpg)
+![vi-command]({{ BASE_PATH }}/img/post/linux-vim-editor/vi-command.jpg)
 
 如果你开启的档案是旧档(已经存在的档案)，则可能会出现如下的信息：
 
-![vi-command]({{ BASE_PATH }}/images/vi-command-2.jpg)
+![vi-command]({{ BASE_PATH }}/img/post/linux-vim-editor/vi-command-2.jpg)
 
 2. 按下 i 进入编辑模式，开始编辑文字
 
 在一般模式之中，只要按下 i, o, a 等字符就可以进入编辑模式了！在编辑模式当中，你可以发现在左下角状态栏中会出现 –INSERT- 的提示！这个时候，键盘上除了 [Esc] 这个按键之外，其他的按键都可以视作为一般的输入按钮。
 
-![vi-insert]({{ BASE_PATH }}/images/vi-insert.jpg)
+![vi-insert]({{ BASE_PATH }}/img/post/linux-vim-editor/vi-insert.jpg)
 
 3. 按下 [ESC] 按钮回到一般模式
 
@@ -69,7 +69,7 @@ vi test.txt
 
 4. 在一般模式中按下 :wq 储存后离开 vi
 
-![vi-line]({{ BASE_PATH }}/images/vi-line.jpg)
+![vi-line]({{ BASE_PATH }}/img/post/linux-vim-editor/vi-line.jpg)
 
 ### 按键说明
 

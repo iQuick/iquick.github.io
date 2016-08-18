@@ -3,6 +3,7 @@ layout:		post
 title:		打开应用商店对应用进行评价
 category:	[Android]
 tags:		[Android]
+catalog:    true
 published:	true
 ---
 # 打开应用商店对应用进行评价
@@ -12,7 +13,7 @@ published:	true
 
 既然我们的打开手机上的已经应用商店，就必须有各大应用商店的包名，以下是现在几个主流的应用
 
-```
+```java
 static {
     MarketPackages.add("com.lenovo.leos.appstore");
     MarketPackages.add("com.android.vending");
@@ -30,7 +31,7 @@ static {
 
 然后就是过滤掉手机上没有安装的应用商店
 
-```
+```java
 public static List<ApplicationInfo> filterInstalledPkgs(Context context) {
     List<ApplicationInfo> infos = new ArrayList<>();
     if (context == null || MarketPackages == null || MarketPackages.size() == 0)
@@ -64,7 +65,7 @@ public static List<ApplicationInfo> filterInstalledPkgs(Context context) {
 
 接着就的打开的我们的应用商店来进行评价了
 
-```
+```java
 /**
  * 启动到app详情界面
  *
@@ -90,7 +91,7 @@ public static void launchAppDetail(Context context, String appPkg, String market
 ```
 
 
-```
+```java
 /**
  * 2015-11-1
  * 应用商店评分工具类

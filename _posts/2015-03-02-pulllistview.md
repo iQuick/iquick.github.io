@@ -10,20 +10,20 @@ published:	true
 
 最近由于需要一个下拉刷新、上拉加载更多的组件，网上许多不同时支持自动加载和上拉加载更多，于是就自己动手写了个PullListView
 
-![PullListView]({{ BASE_PATH }}/images/pulllistview.gif)
+![PullListView]({{ BASE_PATH }}/img/post/pulllistview/pulllistview.gif)
 
 <!--break-->
 
 ## 使用
 用法与平常的ListView一样
-<pre class="prettyprint linenums">
+```java
 mListView = (PullListView) findViewById(R.id.listview);
 mAdapter = new DataAdapter(this);
 mListView.setAdapter(mAdapter);
 mListView.setPrestrain(true); // 设置预加载
 mListView.setOnPullListViewListener(this); // 设置刷新/加载监听
 mListView.setTheEnd(); // 设置已经到底
-</pre>
+```
 
 ## 特色
 

@@ -13,8 +13,8 @@ Markdown是一个将文本转化为HTML的工具。简单来说，Markdown是一
 
 ## Markdown 官方文档
 这里可以看到官方的 Markdown 语法规则文档，当然，后文我也会用自己的方式阐述这些语法的具体用法。
->[创始人John Gruber的Markdown语法说明](http://daringfireball.net/projects/markdown/syntax)
 
+>[创始人John Gruber的Markdown语法说明](http://daringfireball.net/projects/markdown/syntax)
 >[Markdown中文版语法说明](http://wowubuntu.com/markdown/#list)
 
 <!--break-->
@@ -172,17 +172,17 @@ Markdown支持两种风格的链接：Inline和Reference。
 
 ### 语法：
 <pre>
-Inline示例：![替代文本]({{ BASE_PATH }}/images/avatar.jpg "可选的title")
+Inline示例：![替代文本]({{ BASE_PATH }}/img/avatar-xiaobu.png "可选的title")
 Reference示例：![替代文本][pic]
-[pic]: {{ BASE_PATH }}/images/avatar.jpg "可选的title"
-HTML示例：<img src="{{ BASE_PATH }}/images/avatar.jpg" alt="替代文本" title="标题文本" width="200" />
+[pic]: {{ BASE_PATH }}/img/avatar-xiaobu.png "可选的title"
+HTML示例：<img src="{{ BASE_PATH }}/img/avatar-xiaobu.png" alt="替代文本" title="标题文本" width="200" />
 </pre>
 
 ### 效果：
-Inline示例：![替代文本]({{ BASE_PATH }}/images/avatar.jpg "可选的title")
+Inline示例：![替代文本]({{ BASE_PATH }}/img/avatar-xiaobu.png "可选的title")
 Reference示例：![替代文本][pic]
-[pic]: {{ BASE_PATH }}/images/avatar.jpg "可选的title"
-HTML示例：<img src="{{ BASE_PATH }}/images/avatar.jpg" alt="替代文本" title="标题文本" width="200" />
+[pic]: {{ BASE_PATH }}/img/avatar-xiaobu.png "可选的title"
+HTML示例：<img src="{{ BASE_PATH }}/img/avatar-xiaobu.png" alt="替代文本" title="标题文本" width="200" />
 
 ## 表格
 ### 语法：

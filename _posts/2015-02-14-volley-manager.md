@@ -15,14 +15,14 @@ published:	true
 
 结构如下：
 
-![结构]({{ BASE_PATH }}/images/volley-manager-structure.jpg)
+![结构]({{ BASE_PATH }}/img/post/volley-manage/volley-manager-structure.jpg)
 
 <!--break-->
 
 ## 核心类简介
 ### 1.RequestManager.java
 核心网络请求管理，主要用用于管理应用的发送请求及取消请求
-<pre class="prettyprint linenums">
+```java
 import java.io.UnsupportedEncodingException;
 import cn.uue.yixiaoba.App;
 import com.android.volley.Request;
@@ -137,11 +137,11 @@ public class RequestManager {
 		};
     }
 }
-</pre>
+```
 
 ### 2.RequestParams.java
 请求参数，装的请求参数类，用法与Map相似
-<pre class="prettyprint linenums">
+```java
 /**
  * @param key
  * @param value
@@ -184,11 +184,11 @@ public void put(String key, InputStream stream, String fileName, String contentT
 		fileParams.put(key, new FileWrapper(stream, fileName, contentType));
 	}
 }
-</pre>
+```
 
 ### 3.RequestListener.java
 请求监听接口
-<pre class="prettyprint linenums">
+```java
 public interface RequestListener {
 
 	/** 成功 */
@@ -253,7 +253,7 @@ public byte[] getBody() throws AuthFailureError {
 	}
 	return super.getBody();// mPostBody is null or Map<String, String>
 }
-</pre>
+```
 
 
 Github：[https://github.com/iQuick/VolleyManager](https://github.com/iQuick/VolleyManager)

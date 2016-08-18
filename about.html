@@ -1,50 +1,169 @@
 ---
 layout: page
-title: 关于
-header: About me
-group: navigation
-index: 4
+title: "About"
+description: "Hey, Imli."
+header-img: "img/about-bg.jpg"
+group: "navigation"
 ---
-{% include JB/setup %}
 
-<h2>关于我</h2>
+<!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <!-- <option value="1"> 英文 English </option> -->
+</select>
 
-<p>万千苦逼程序猿中的一个，Android开发、科技脑残粉, 爱技术、爱尝鲜，当然我也爱钱 ^_^，我很懒！</p>
+<!-- Chinese Version -->
+<div class="zh post-container">
 
-<pre class="prettyprint">
-Nick = 'IQuick'
-Name = 'Li'
-description = 'Android Developer, Technology Fans, Love Money, Lazy'
+    <!--copied from markdown -->
+    <blockquote><p>写写代码，做做应用，带你看世界。</p></blockquote>
 
-while true
-  programing
-  reading
-  enjoying
-end
-</pre>
+    <p>我 <strong>小步哥</strong> ，程序员 &amp; 程序猿</p>
 
-<h2>联系我</h2>
+    <p>万千苦逼程序猿中的一个，Android开发、科技脑残粉, 爱技术、爱尝鲜，当然我也爱钱 ^_^，我很懒！</p>
 
-<ul>
-	<li>
-		<p>Github：<a href="https://github.com/iQuick">https://github.com/iQuick</a></p>
-	</li>
-	<li>
-		<p>EMail: 398456983@qq.com</p>
-	</li>
-	<li>
-		<p>简历: <a href="http://www.imli.me/static/resume-2016">http://www.imli.me/static/resume-2016</a></p>
-	</li>
-	<li>
-		<p>博客订阅：<a href="http://iquick.github.io/rss.xml">http://iquick.github.io/rss.xml</a></p>
-	</li>
-	<li>
-		<p>博客导航：<a href="{{ BASE_PATH}}/pages.html">{{ BASE_PATH}}http://iquick.github.io/pages.html</a></p>
-	</li>
-	<li>
-		<p>打赏我：如果觉得我的博客，或者我的各种分享对您有帮助，不妨支付宝扫描打赏我杯咖啡吧，我将更有动力。</p>
-		<img src="{{BASE_PATH}}/images/zf.jpg">
-	</li>
+    <pre class="prettyprint">
+        Nick = 'IQuick'
+        Name = '小步哥'
+        description = 'Android Developer, Technology Fans, Love Money, Lazy'
+
+        while true
+          programing
+          reading
+          enjoying
+        end
+    </pre>
+    <br />
+
+    <h5>我</h5>
+
+    <ul>
+        <li>
+            <p>Github：<a href="https://github.com/iQuick">https://github.com/iQuick</a></p>
+        </li>
+        <li>
+            <p>Wechat: Dootsone</p>
+        </li>
+        <li>
+            <p>简历: <a href="http://www.imli.me/static/resume-2016">http://www.imli.me/static/resume-2016</a></p>
+        </li>
+<!--         <li>
+            <p>博客订阅：<a href="http://iquick.github.io/rss.xml">http://iquick.github.io/rss.xml</a></p>
+        </li>
+        <li>
+            <p>博客导航：<a href="{{ BASE_PATH}}/pages.html">{{ BASE_PATH}}http://iquick.github.io/pages.html</a></p>
+        </li> -->
+        <li>
+            <p>打赏我：如果觉得我的博客，或者我的各种分享对您有帮助，不妨支付宝扫描打赏我杯咖啡吧，我将更有动力。</p>
+            <img src="{{BASE_PATH}}/img/zf.jpg">
+        </li>
 </ul>
 
-{% include custom/duoshuo%}
+
+</div>
+
+<!-- English Version -->
+<!-- <div class="en post-container">
+</div> -->
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    // get nodes
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    var $select = document.querySelector("select");
+
+    // bind hashchange event
+    window.addEventListener('hashchange', _render);
+
+    // handle render
+    function _render(){
+        var _hash = window.location.hash;
+        // en
+        if(_hash == "#en"){
+            $select.selectedIndex = 1;
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        // zh by default
+        }else{
+            // not trigger onChange, otherwise cause a loop call.
+            $select.selectedIndex = 0;
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }
+    }
+
+    // handle select change
+    function onLanChange(index){
+        if(index == 0){
+            window.location.hash = "#zh"
+        }else{
+            window.location.hash = "#en"
+        }
+    }
+
+    // init
+    _render();
+</script>
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = '{{site.duoshuo_username}}';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}
