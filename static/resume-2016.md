@@ -15,8 +15,7 @@ group: static
   <p>姓名：       李赞 <br>
   性别：       男 <br>
   籍贯：       湖北 <br>
-  年龄：       24 <br>
-  学历：       大专</p>
+  年龄：       24 </p>
 </blockquote>
 
 
