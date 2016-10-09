@@ -13,6 +13,7 @@ title: 		'音视频 - RGB & YUV 初探'
 俗话说，好记性不如烂笔头。这里结合众多“大大”们的文章，在此记一笔...
 
 ## 名词讲解
+
 ### RGB
 RGB色彩模式是工业界的一种颜色标准，是通过对红(R)、绿(G)、蓝(B)三个颜色通道的变化以及它们相互之间的叠加来得到各式各样的颜色的，RGB即是代表红、绿、蓝三个通道的颜色，这个标准几乎包括了人类视力所能感知的所有颜色，是目前运用最广的颜色系统之一。它是最通用的面向硬件的彩色模型,该模型用于彩色监视器和一大类彩色视频摄像。
 
@@ -22,10 +23,11 @@ RGB（红绿蓝）是依据人眼识别的颜色定义出的空间，可表示�
 <!-- break -->
 
 ## RGB 与 YUV 互转
+
 ### 公式
 YUV 使用RGB的信息，但它从全彩色图像中产生一个黑白图像，然后提取出三个主要的颜色变成两个额外的信号来描述颜色。把这三个信号组合回来就可以产生一个全彩色图像。如下图：
 
-![RGB&YUV 互转]({{ BASE_PATH }}/img/post/rgb-yuv/rgb2yuv.jpg)
+![RGB&YUV 互转]({{ BASE_PATH }}/img/post/rgb-yuv/rgb2yuv.png)
 
 公式：
 ```java
@@ -37,6 +39,7 @@ R = Y + 1.402 (V-128)
 G = Y - 0.34414 (U-128) - 0.71414 (V-128)
 B = Y + 1.772 (U-128)
 ```
+
 ### 代码实现
 
 YUV 转 RGB
@@ -89,6 +92,7 @@ public static boolean RGB2YUV(YUV yuv, int r, int g, int b) {
 ```
 
 ## YUV（YCbCr）采样格式
+
 ### YUV 采样格式说明
 主要的采样格式有 YCbCr 4:2:0、YCbCr 4:2:2、YCbCr 4:1:1和 YCbCr 4:4:4。其中YCbCr 4:1:1 比较常用，其含义为：每个点保存一个 8bit 的亮度值(也就是Y值), 每 2x2 个点保存一个 Cr 和Cb 值, 图像在肉眼中的感觉不会起太大的变化。所以, 原来用 RGB(R,G,B 都是 8bit unsigned) 模型, 4 个点需要 8x3=24 bites（如下图第一个图）. 而现在仅需要 8+(8/4)+(8/4)=12bites, 平均每个点占12bites(如下图第二个图)。这样就把图像的数据压缩了一半。
 
@@ -133,10 +137,115 @@ YUV三个信道的抽样率相同，因此在生成的图像里，每个象素�
 映射出的像素点为：[Y0 U0 V5] [Y1 U0 V5] [Y2 U2 V7] [Y3 U2 V7] [Y5 U0 V5] [Y6 U0 V5] [Y7U2 V7] [Y8 U2 V7]
 
 
+## YUV 格式
+
+### YUV存储格式（述像素的Y、U、V分量排列方式）
+
+* 紧缩格式(packed formats)：将Y、U、V值储存成Macro Pixels阵列，和RGB的存放方式类似。
+* 平面格式(planar formats)：将Y、U、V的三个分量分别存放在不同的矩阵中。
+
+### 常见格式 
+
+常见 YUV 格式YV16、YV12、IYUV、I420、NV12、NV21
+
+### YV16
+YUV422 有打包格式(Packed)，一如前文所述。同时还有平面格式(Planar)，即Y、U、V是分开存储的，每个分量占一块地方，其中Y为 width * height，而U、V合占 width * height ，该种格式每个像素占16比特。根据U、V的顺序，分出2种格式，U前V后即YUV422P，也叫I422，V前U后，叫YV16(YV表示Y后面跟着V，16表示16bit)
+
+### YV16 转 RGB
+```java
+/**
+ * YV16 是 YUV:422 格式，是三个 plane,(Y)(U)(V)
+ * 
+ * @param src 数据源
+ * @param width 
+ * @param height
+ * @return
+ */
+public static int[] YV16ToRGB(byte[] src, int width, int height) {
+		int len = width * height;
+		int yStart = 0;
+		int uStart = len;
+		int vStart = len * 3 / 2;
+		
+		// RGB数组
+		int[] rgbs = new int[len * 3];
+		
+		// RGB
+		RGB rgb = new RGB();
+		// 计算转换
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++) {
+				
+				int yIdx = yStart + i * width + j;
+				int uIdx = uStart + i * width / 2 + j /2;
+				int vIdx = vStart + i * width / 2 + j /2;
+				
+				boolean to = YUV2RGB(rgb, src[yIdx], src[uIdx], src[vIdx]);
+				
+				// 填充
+				rgbs[yIdx * 3 + 0] = rgb.r;
+				rgbs[yIdx * 3 + 1] = rgb.g;
+				rgbs[yIdx * 3 + 2] = rgb.b;
+			}
+		}
+		
+		return rgbs;
+}
+```
+
+### YV12
+数组后面紧接着所有 V (Cr) 样例。V 平面的跨距为 Y 平面跨距的一半，V 平面包含的行为 Y 平面包含行的一半。V 平面后面紧接着所有 U (Cb) 样例，它的跨距和行数与 V 平面相同。
+
+### YV12 转 RGB
+```java
+/**
+ * 
+ * YV12 是 yuv420 格式，是3个plane，排列方式为 (Y)(V)(U)  
+ * 
+ * @param src
+ * @param width
+ * @param height
+ * @return
+ */
+public static int[] YV12ToRGB(byte[] src, int width, int height) {
+	int len = width * height;
+	int yStart = 0;
+	int vStart = len;
+	int uStart = len * 5 / 4;
+	
+	// RGB 数组
+	int rgbs[] = new int[len * 3];
+
+	// RGB
+	RGB rgb = new RGB();
+	// 计算转换
+	for (int i = 0; i < height; i++) {
+		for (int j = 0; j < width; j++) {
+
+			int yIdx = yStart + i * width + j;
+			int uIdx = uStart + (i/2)*(width/2) + j / 2;
+			int vIdx = vStart + (i/2)*(width/2) + j / 2;
+			
+			boolean to = YUV2RGB(rgb, src[yIdx], src[uIdx], src[vIdx]);
+			
+			// 填充
+			rgbs[yIdx * 3 + 0] = rgb.r;
+			rgbs[yIdx * 3 + 1] = rgb.g;
+			rgbs[yIdx * 3 + 2] = rgb.b;
+		}
+	}
+	
+    return rgbs;  
+}  
+```
+
 ## 源码
 * Github：[https://github.com/iQuick/GeekStudy/tree/master/YUV&RGB](https://github.com/iQuick/GeekStudy/tree/master/YUV&RGB)
 
 ## 参考
 * YUV : [https://en.wikipedia.org/wiki/YUV](https://en.wikipedia.org/wiki/YUV) 
 * YUV 采样格式：[http://blog.csdn.net/firstlai/article/details/52169783](http://blog.csdn.net/firstlai/article/details/52169783)
-* YUV & RGB　互转：[http://www.cnblogs.com/qinjunni/archive/2012/04/06/2434393.html](http://www.cnblogs.com/qinjunni/archive/2012/04/06/2434393.html)
+* YUV & RGB　互转：[http://www.cnblogs.com/dwdxdy/p/3713990.html](http://www.cnblogs.com/dwdxdy/p/3713990.html)
+* YUV & RGB　互转：[http://blog.csdn.net/huiguixian/article/details/17334195](http://blog.csdn.net/huiguixian/article/details/17334195)
+* YUV 常见格式说明：[http://www.cnblogs.com/dwdxdy/p/3713968.html](http://www.cnblogs.com/dwdxdy/p/3713968.html)
+* YUV 422P、YV16、NV16、NV61格式转换成RGB24：[http://blog.csdn.net/subfate/article/details/47304945](http://blog.csdn.net/subfate/article/details/47304945)
