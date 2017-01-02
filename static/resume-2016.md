@@ -20,14 +20,6 @@ group: static
 
 
 
-<h3 id="工作经历">工作经历</h3>
-
-<blockquote>
-  <p>2013/3 - 今：武汉易趣科技有限公司 <br>
-  2015/7- 2015/8：在武大担任 Android 培训讲师</p>
-</blockquote>
-
-
 
 <h3 id="项目经历">项目经历</h3>
 
