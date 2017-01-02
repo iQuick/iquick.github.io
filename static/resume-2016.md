@@ -12,7 +12,7 @@ group: static
 <h3 id="个人信息">个人信息</h3>
 
 <blockquote>
-  <p>姓名：       李赞 <br>
+  <p>姓名：       小步 <br>
   性别：       男 <br>
   籍贯：       湖北 <br>
   年龄：       24 </p>
