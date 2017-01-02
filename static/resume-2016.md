@@ -149,12 +149,5 @@ group: static
 
 
 
-<h3 id="求职意向">求职意向</h3>
-
-<blockquote>
-  <p>职位：Android 开发工程师 <br>
-  薪水：12k / m</p>
-</blockquote>
-
 
 
