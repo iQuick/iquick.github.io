@@ -123,7 +123,7 @@ group: static
 
 <blockquote>
   <ol>
-  <li>淘宝好友进行发送消息</li>
+  <li>淘宝好友群发送消息</li>
   <li>微信抢红包</li>
   </ol>
 </blockquote>
